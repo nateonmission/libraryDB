@@ -1,7 +1,5 @@
 package com.librarydb.models;
 
-import com.librarydb.models.Books;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

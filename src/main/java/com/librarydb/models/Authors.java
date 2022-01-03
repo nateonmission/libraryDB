@@ -1,4 +1,4 @@
-package com.librarydb.model;
+package com.librarydb.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "authors")
-public class Author {
+public class Authors {
 
     @Id
     @Column
@@ -20,9 +20,9 @@ public class Author {
 
     @ManyToMany (cascade = CascadeType.ALL, mappedBy = "authors")
     @JsonIgnore
-    private Set<Book> books;
+    private Set<Books> books;
 
-    public Author() {
+    public Authors() {
     }
 
     public Long getId() {
@@ -41,11 +41,11 @@ public class Author {
         this.name = name;
     }
 
-    public Set<Book> getBooks() {
+    public Set<Books> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(Set<Books> books) {
         this.books = books;
     }
 }
