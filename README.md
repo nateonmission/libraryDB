@@ -8,6 +8,7 @@
 - As a library manager, I want to update information so that the we can keep records current.
 
 ## END POINTS
+|Method |Endpoints                           |Description                   |
 |-------|------------------------------------|------------------------------|
 |GET    |api/books                           |returns JSON of all books     |
 |POST   |api/books                           |reates new book               |
