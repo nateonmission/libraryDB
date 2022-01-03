@@ -61,11 +61,11 @@ Here is the diagram we built of our models.
 - As a library manager, I want to update information so that the we can keep records current.
 
 ### Timeline
-Day 1: Preparation/planning, setup Spring Boot files
-Day 2: Create book, author, genre, and publisher models
-Day 3: Create book, author, genre, and publisher repositories; create exceptions
-Day 4: Create book service and book controller
-Day 5: Bonus items
+Day 1: Preparation/planning, setup Spring Boot files <br>
+Day 2: Create book, author, genre, and publisher models <br>
+Day 3: Create book, author, genre, and publisher repositories; create exceptions <br>
+Day 4: Create book service and book controller <br>
+Day 5: Bonus items <br>
 Day 6: Polishing up and presentation
 
 ### MVP
