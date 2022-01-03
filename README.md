@@ -34,7 +34,7 @@
 |PUT    |api/publishers/{publisherID}        |updates specific publisher    |
 |DELETE	|api/publishers/{publisherID}        |deletes specific publisher    |
 |       |                                    |                              |
-|GET	|api/genres							 |returns a list of Fic genres  |
+|GET	|api/genres							 |returns a list of books in genres  |
 |POST	|api/genres							 |creates new genre             |
 |PUT    |api/genres/{genreID}				 |updates                       |
 |DELETE |api/genres/{genreID}				 |deletes                       |
@@ -42,7 +42,7 @@
 |       |                                    |                              |
 |GET	|api/authors/{authorID}/books        |returns JSON of author's books|
 |GET    |api/books/{bookID}/author	         |returns JSON of book's authors|
-|GET	|api/publishers/{publisherID}/books  |	returns JSON of pub's books |
+|GET	|api/publishers/{publisherID}/books  |returns JSON of pub's books   |
 |GET	|api/publishers/{publisherID}/authors|returns JSON of pub's authors |
 
 
