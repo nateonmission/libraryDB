@@ -53,5 +53,6 @@ We are creating a personal library application that an individual or family can 
 |GET	|api/publishers/{publisherID}/authors|returns JSON of pub's authors |
 
 ## ERD Diagram
-Here is the diagram we built of our models using [Lucid Charts](https://lucid.app/lucidchart/8f452d56-9d67-45b3-af99-39b1321dd559/edit?invitationId=inv_197ee268-2fe8-4f5e-8fc1-d4f8e0cc5f9c).
+Here is the [diagram](![ERD Diagram](https://user-images.githubusercontent.com/79819338/147974942-de8f0ac4-6df4-4e1c-87d7-d171c61c1e08.png)
+we built of our models.
 
