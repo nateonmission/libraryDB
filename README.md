@@ -45,5 +45,6 @@
 |GET	|api/publishers/{publisherID}/books  |	returns JSON of pub's books |
 |GET	|api/publishers/{publisherID}/authors|returns JSON of pub's authors |
 
-
+## ERD Diagram
+Here is the diagram we built of our models using [Lucid Charts] (![image](https://user-images.githubusercontent.com/79819338/147964863-63f0765d-dd47-4ba9-8bd1-508ecf5e8977.png).
 
