@@ -7,9 +7,12 @@
 ## Methodology
 
 ## USER STORIES
-- As a library parton, I want to find NF books by topic so that I can do research.
-- As a library parton, I want to find Fic books by genre so that I can find my favorite books to read.
-- As a library manager, I want to enter new books so that the libreary can grow.
+- As a library patron, I want to find nonfiction books by genre/topic so that I can do research.
+- As a library patron, I want to find fiction books by author/title so that I can find my favorite books to read.
+- As a library patron, I want to find fiction books by genre so that I can find similar books to read.
+- As a library manager, I want to enter new books so that the library can grow.
+- As a library manager, I want to delete books that the library no longer holds.
+- As a library manager, I want to determine which books are checked out so I can determine if others can access them. 
 - As a library manager, I want to enter new authors so that the we can track new book writers.
 - As a library manager, I want to update information so that the we can keep records current.
 
