@@ -53,6 +53,7 @@ We are creating a personal library application that an individual or family can 
 |GET	|api/publishers/{publisherID}/authors|returns JSON of pub's authors |
 
 ## ERD Diagram
-Here is the [diagram](![ERD Diagram](https://user-images.githubusercontent.com/79819338/147974942-de8f0ac4-6df4-4e1c-87d7-d171c61c1e08.png)
-we built of our models.
+Here is the diagram we built of our models.
+![ERD Diagram](https://user-images.githubusercontent.com/79819338/147974942-de8f0ac4-6df4-4e1c-87d7-d171c61c1e08.png)
+
 
