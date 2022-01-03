@@ -13,9 +13,9 @@ public class bookController {
     private static final Logger LOGGER = Logger.getLogger(bookController.class.getName());
 
     @GetMapping("/")
-    public String Hello(){
+    public String isAlive(){
         LOGGER.info("calling getCategory method from controller");
-        return "Hello World";
+        return "<h1>I'm Alive</h1>";
     }
 
 }
