@@ -46,5 +46,5 @@
 |GET	|api/publishers/{publisherID}/authors|returns JSON of pub's authors |
 
 ## ERD Diagram
-Here is the diagram we built of our models using [Lucid Charts] (![image](https://user-images.githubusercontent.com/79819338/147964863-63f0765d-dd47-4ba9-8bd1-508ecf5e8977.png).
+Here is the diagram we built of our models using [Lucid Charts] (https://lucid.app/lucidchart/8f452d56-9d67-45b3-af99-39b1321dd559/edit?invitationId=inv_197ee268-2fe8-4f5e-8fc1-d4f8e0cc5f9c).
 
