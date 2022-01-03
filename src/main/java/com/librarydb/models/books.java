@@ -33,7 +33,7 @@ public class books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "genre_id")
-    private Genre genre;
+    private List<Genre> genres;
 
     @JsonIgnore
     @ManyToOne
@@ -43,7 +43,7 @@ public class books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "author_id")
-    private Author author;
+    private List<Author> authors;
 
 
     public books() {
@@ -112,12 +112,12 @@ public class books {
         isAvailable = available;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public List<Genre> getGenres() {
+        return genres;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setGenre(List<Genre> genres) {
+        this.genres = genres;
     }
 
     public Publisher getPublisher() {
@@ -128,11 +128,11 @@ public class books {
         this.publisher = publisher;
     }
 
-    public Author getAuthor() {
-        return author;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(List<Author> authors) {
+        this.authors = authors;
     }
 }
