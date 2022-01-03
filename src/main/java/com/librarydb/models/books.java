@@ -1,12 +1,14 @@
 package com.librarydb.models;
 
+import com.librarydb.models.Genres;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name ="books")
-public class books {
+public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -33,7 +35,7 @@ public class books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "genre_id")
-    private List<Genre> genres;
+    private Genres genres;
 
     @JsonIgnore
     @ManyToOne
@@ -43,17 +45,17 @@ public class books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "author_id")
-    private List<Author> authors;
+    private List<Authors> authors;
 
 
-    public books() {
+    public Books() {
     }
 
-    public books(String title, Genre genre, Publisher publisher, Author author) {
+    public Books(String title, List<Genres> genres, Publisher publisher, List<Authors> authors) {
         this.title = title;
-        this.genre = genre;
+        this.genres = genres;
         this.publisher = publisher;
-        this.author = author;
+        this.authors = authors;
     }
 
     public Long getId() {
@@ -112,11 +114,11 @@ public class books {
         isAvailable = available;
     }
 
-    public List<Genre> getGenres() {
+    public List<Genres> getGenres() {
         return genres;
     }
 
-    public void setGenre(List<Genre> genres) {
+    public void setGenre(List<Genres> genres) {
         this.genres = genres;
     }
 
@@ -128,11 +130,11 @@ public class books {
         this.publisher = publisher;
     }
 
-    public List<Author> getAuthors() {
+    public List<Authors> getAuthors() {
         return authors;
     }
 
-    public void setAuthor(List<Author> authors) {
+    public void setAuthor(List<Authors> authors) {
         this.authors = authors;
     }
 }
