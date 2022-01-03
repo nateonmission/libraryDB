@@ -38,6 +38,7 @@
 |PUT    |api/genres/{genreID}				 |updates                       |
 |DELETE |api/genres/{genreID}				 |deletes                       |
 |GET    |api/genres/{genreID}/books			 |returns JSON of books in genre|
-|-------|------------------------------------|------------------------------|
+
+
 
 
