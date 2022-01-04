@@ -157,7 +157,6 @@ public class BookServices {
         }
     }
 
-
     // PUT api/authors/{author_ID}
     public Authors updateAuthor(Long authorId, Authors authorObject) {
         LOGGER.info("service calling updateAuthor ==>");
@@ -209,6 +208,17 @@ public class BookServices {
         }
     }
 
+    // GET api/genre/{genre_ID}
+    public Optional getGenre(Long genreId) {
+        LOGGER.info("service calling getGenre ==>");
+        Optional genre = genreRepository.findById(genreId);
+        if (genre.isPresent()) {
+            return genre;
+        } else {
+            throw new InfoNotFoundException("Genre with id " + genreId + "not found");
+        }
+    }
+
     // PUT api/genres/{genre_ID}
     public Genres updateGenre( Long genreID, Genres genreObject) {
         LOGGER.info("calling updateGenre method ==> ");
@@ -257,6 +267,17 @@ public class BookServices {
             throw new InfoExistsException("publisher with name " + pub.getName() + " already exists");
         } else {
             return publisherRepository.save(publisherObject);
+        }
+    }
+
+    // GET api/publisher/{publisher_ID}
+    public Optional getPublisher(Long publisherId) {
+        LOGGER.info("service calling getPublisher ==>");
+        Optional publisher = publisherRepository.findById(publisherId);
+        if (publisher.isPresent()) {
+            return publisher;
+        } else {
+            throw new InfoNotFoundException("Publisher with id " + publisherId + "not found");
         }
     }
 
