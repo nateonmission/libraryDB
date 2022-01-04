@@ -2,6 +2,7 @@ package com.librarydb.controllers;
 
 import com.librarydb.models.Authors;
 import com.librarydb.models.Genres;
+import com.librarydb.models.Publishers;
 import com.librarydb.repositories.AuthorRepository;
 import com.librarydb.repositories.BookRepository;
 import com.librarydb.repositories.GenreRepository;
@@ -128,6 +129,39 @@ public class bookController {
     public Genres deleteCategory(@PathVariable(value = "genreID") Long genreID){
         LOGGER.info("calling deleteCategory method from controller");
         return bookServices.deleteGenre(genreID);
+    }
+
+    // PUBLISHERS
+    //  List All Publishers
+    // http://localhost:9092/api/publishers
+    @GetMapping("/publishers")
+    public List<Publishers> getPublishers(){
+        LOGGER.info("calling getPublishers method from controller");
+        return bookServices.getPublishers();
+    }
+
+    // Create Publisher = POST	api/publishers
+    // http://localhost:9092/api/publishers
+    @PostMapping(path = "/publishers")
+    public Publishers createPublisher(@RequestBody Publishers pubObject){
+        LOGGER.info("calling createPublisher method from controller");
+        return bookServices.createPublisher(pubObject);
+    }
+
+    // Update Publisher
+    // POST to http://localhost:9092/api/publishers/pub_id
+    @PutMapping(path = "/publishers/{pubID}")
+    public Publishers updatePublisher(@PathVariable(value = "pubID") Long pubID, @RequestBody Publishers pubObject){
+        LOGGER.info("calling updatePublisher method from controller");
+        return bookServices.updatePublisher(pubID, pubObject);
+    }
+
+    // Delete Publisher
+    // DELETE to http://localhost:9092/api/publishers/pub_id
+    @DeleteMapping(path = "/publishers/{pubID}")
+    public Publishers deletePublisher(@PathVariable(value = "pubID") Long pubID){
+        LOGGER.info("calling deletePublisher method from controller");
+        return bookServices.deletePublisher(pubID);
     }
 
 }
