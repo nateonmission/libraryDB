@@ -29,7 +29,7 @@ efficiently keep track of their books!
 |PUT    |api/publishers/{publisherID}        |updates specific publisher    ||
 |DELETE    |api/publishers/{publisherID}        |deletes specific publisher    ||
 |       |                                    |                              ||
-|GET    |api/genres                             |returns a list of books in genres  ||
+|GET    |api/genres                             |returns a list of genres  | X    |
 |POST    |api/genres                             |creates new genre             | X    |
 |PUT    |api/genres/{genreID}                 |updates                       ||
 |DELETE |api/genres/{genreID}                 |deletes                       ||

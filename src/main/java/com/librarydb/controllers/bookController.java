@@ -57,7 +57,7 @@ public class bookController {
         return "<h1>I'm Alive</h1>";
     }
 
-    // TODO List All Categories
+    //  List All Categories
     // http://localhost:9092/api/genres
     @GetMapping("/genres")
     public List<Genres> getGenres(){
@@ -66,6 +66,7 @@ public class bookController {
     }
 
     // Create Genre = POST	api/genres
+    // http://localhost:9092/api/genres
     @PostMapping(path = "/genres")
     public Genres createGenre(@RequestBody Genres genreObject){
         LOGGER.info("calling createGenre method from controller");
