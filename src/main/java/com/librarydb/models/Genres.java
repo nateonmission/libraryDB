@@ -10,15 +10,14 @@ import java.util.List;
 public class Genres {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name="genre_id")
     private Long id;
 
-    @Column
+    @Column(name="genre_name")
     private String name;
 
+    @ManyToMany (cascade = CascadeType.ALL, mappedBy = "genres")//, mappedBy = "books")
     @JsonIgnore
-    @ManyToMany (cascade = CascadeType.ALL)//, mappedBy = "books")
-    @JoinColumn(name = "book_id")
     private List<Books> books;
 
 

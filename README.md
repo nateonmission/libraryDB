@@ -61,10 +61,10 @@ Here is the diagram we built of our models.
 - As a library manager, I want to update information so that the we can keep records current.
 
 ### Timeline
-Day 1: Preparation/planning, setup Spring Boot files <br>
-Day 2: Create book, author, genre, and publisher models <br>
-Day 3: Create book, author, genre, and publisher repositories; create exceptions <br>
-Day 4: Create book service and book controller <br>
+Day 1: Preparation/planning, setup Spring Boot files; Create book, author, genre, and publisher models <br>
+Day 2: Create book, author, genre, and publisher repositories; Create exceptions; Create book service and book controller <br>
+Day 3: Bonus items <br>
+Day 4: Bonus items <br>
 Day 5: Bonus items <br>
 Day 6: Polishing up and presentation
 
@@ -78,17 +78,16 @@ Our minimum viable product (MVP) will be a database that persists four models--b
 
 ## TECHNOLOGY USED
 1. Lucid Charts to create the ERD.
-2. IntelliJ IDEA
+2. Java in IntelliJ IDEA
 3. Spring Boot
 4. Maven
-5. PostgreSQL
-6. pgAdmin
-7. Postman 
-
-## Setup
-
-## Methodology
+5. PostgreSQL and pgAdmin for database/tables
+6. Postman to test Endpoints
 
 ## INSTALLATION INSTRUCTIONS
+1. Fork and clone the repository.
+2. Using pgAdmin, create a database called ```librarydb```.
+3. Open the file ```libraryDB/src/main/resources/application-dev.properties``` and ensure line 1 states that port 9092 is going to be used. Change lines 6 and 7 to your PostgreSQL username and password. 
+4. 
 
 
