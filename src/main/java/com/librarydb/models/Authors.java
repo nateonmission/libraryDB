@@ -28,11 +28,6 @@ public class Authors {
     @JsonIgnore
     private Publishers publishers;
 
-    @ManyToOne
-    @JoinColumn (name = "publishers")
-    @JsonIgnore
-    private Publishers publishers;
-
     public Authors() {
     }
 

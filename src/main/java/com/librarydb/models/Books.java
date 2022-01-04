@@ -59,7 +59,7 @@ public class Books {
     public Books() {
     }
 
-    public Books(String title, Set<Genres> genres, Publishers publisher, Set<Authors> authors) {
+    public Books(String title, List<Genres> genres, Publishers publisher, List<Authors> authors) {
         this.title = title;
         this.genres = genres;
         this.publisher = publisher;
@@ -122,11 +122,11 @@ public class Books {
         isAvailable = available;
     }
 
-    public Set<Genres> getGenres() {
+    public List<Genres> getGenres() {
         return genres;
     }
 
-    public void setGenre(Set<Genres> genres) {
+    public void setGenre(List<Genres> genres) {
         this.genres = genres;
     }
 
@@ -138,11 +138,11 @@ public class Books {
         this.publisher = publisher;
     }
 
-    public Set<Authors> getAuthors() {
+    public List<Authors> getAuthors() {
         return authors;
     }
 
-    public void setAuthor(Set<Authors> authors) {
+    public void setAuthor(List<Authors> authors) {
         this.authors = authors;
     }
 }
