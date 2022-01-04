@@ -3,6 +3,7 @@ package com.librarydb.services;
 import com.librarydb.controllers.bookController;
 import com.librarydb.exceptions.InfoExistsException;
 import com.librarydb.exceptions.InfoNotFoundException;
+import com.librarydb.models.Authors;
 import com.librarydb.models.Genres;
 import com.librarydb.repositories.AuthorRepository;
 import com.librarydb.repositories.BookRepository;
@@ -47,6 +48,69 @@ public class BookServices {
     public void setPublisherRepository(PublisherRepository publisherRepository) {
 
         this.publisherRepository = publisherRepository;
+    }
+
+    // GET api/authors
+    public List<Authors> getAuthors() {
+        LOGGER.info("service calling getAuthors ==>");
+        return authorRepository.findAll();
+    }
+
+    // POST api/authors
+    public Authors createAuthor(Authors authorObject) {
+        LOGGER.info("service calling createAuthor ==>");
+        Authors author = authorRepository.findByName(authorObject.getName());
+        if (author != null) {
+            throw new InfoExistsException("Author with name "
+                    + author.getName() + " already exists");
+        } else {
+            return authorRepository.save(authorObject);
+        }
+    }
+
+    // GET api/authors/{author_ID}
+    public Optional getAuthor(Long authorId) {
+        LOGGER.info("service calling getAuthor ==>");
+        Optional author = authorRepository.findById(authorId);
+        if (author.isPresent()) {
+            return author;
+        } else {
+            throw new InfoNotFoundException("Author with id " + authorId + "not found");
+        }
+    }
+
+    // GET api/books/{book_ID}/authors
+
+    // GET api/publishers/{publisher_ID}/authors
+
+    // PUT api/authors/{author_ID}
+    public Authors updateAuthor(Long authorId, Authors authorObject) {
+        LOGGER.info("service calling updateAuthor ==>");
+        Optional<Authors> author = authorRepository.findById(authorId);
+        if (author.isPresent()) {
+            if (authorObject.getName().equals(author.get().getName())) {
+                throw new InfoExistsException("Author "
+                        + author.get().getName() + " already exists");
+            } else {
+                Authors updateAuthor = authorRepository.findById(authorId).get();
+                updateAuthor.setName(authorObject.getName());
+                return authorRepository.save(updateAuthor);
+            }
+        } else {
+            throw new InfoNotFoundException("author with id " + authorId + " not found");
+        }
+    }
+
+    // DEL api/authors/{author_ID}
+    public Optional<Authors> deleteAuthor(Long authorId) {
+        LOGGER.info("service calling updateAuthor ==>");
+        Optional<Authors> author = authorRepository.findById(authorId);
+        if (author.isPresent()) {
+            authorRepository.deleteById(authorId);
+            return author;
+        } else {
+            throw new InfoNotFoundException("Author with id " + authorId + " not found");
+        }
     }
 
     // GET api/genres
