@@ -82,8 +82,18 @@ public class bookController {
     }
 
     // GET a book's authors
+    @GetMapping(path = "/books/{book_ID}/authors")
+    public List<Authors> getBookAuthors(@PathVariable Long booksId) {
+        LOGGER.info("controller calling getBookAuthors ==>");
+        return bookServices.getBookAuthors(booksId);
+    }
 
     // GET a publisher's authors
+    @GetMapping(path = "/publishers/{publisher_ID}/authors")
+    public List<Authors> getPublisherAuthors(@PathVariable Long publishersId) {
+        LOGGER.info("controller calling getPublisherAuthors ==>");
+        return bookServices.getPublisherAuthors(publishersId);
+    }
 
     // PUT update an author
     @PutMapping(path = "/authors/{author_ID}")
