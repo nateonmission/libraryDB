@@ -36,7 +36,7 @@ public class Books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "genre_id")
-    private Genres genres;
+    private List<Genres> genres;
 
     @JsonIgnore
     @ManyToOne
