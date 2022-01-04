@@ -81,4 +81,12 @@ public class bookController {
         return bookServices.updateGenre(genreID, genreObject);
     }
 
+    // Delete Category
+    // DELETE to http://localhost:9092/api/categories/cat_id
+    @DeleteMapping(path = "/genres/{genreID}")
+    public Genres deleteCategory(@PathVariable(value = "genreID") Long genreID){
+        LOGGER.info("calling deleteCategory method from controller");
+        return bookServices.deleteGenre(genreID);
+    }
+
 }

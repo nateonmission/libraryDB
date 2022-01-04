@@ -86,5 +86,17 @@ public class BookServices {
         }
     }
 
+    public Genres deleteGenre( Long genreID) {
+        LOGGER.info("calling deleteCategory method ==>");
+
+        Optional<Genres> genre = genreRepository.findById(genreID);
+        if (genre != null) {
+            genreRepository.deleteById(genreID);
+            return genre.get();
+        } else {
+            throw new InfoNotFoundException("category with id: " + genreID + " does NOT exists");
+        }
+    }
+
 
 }

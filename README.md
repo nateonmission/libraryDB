@@ -32,7 +32,7 @@ efficiently keep track of their books!
 |GET    |api/genres                             |returns a list of genres  | X    |
 |POST    |api/genres                             |creates new genre             | X    |
 |PUT    |api/genres/{genreID}                 |updates                       | X    |
-|DELETE |api/genres/{genreID}                 |deletes                       ||
+|DELETE |api/genres/{genreID}                 |deletes                       | X    |
 |GET    |api/genres/{genreID}/books             |returns JSON of books in genre||
 |       |                                    |                              ||
 |GET    |api/authors/{authorID}/books        |returns JSON of author's books||
