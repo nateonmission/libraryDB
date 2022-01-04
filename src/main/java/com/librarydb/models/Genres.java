@@ -14,10 +14,10 @@ public class Genres {
     private Long id;
 
     @Column
-    private String title;
+    private String name;
 
     @JsonIgnore
-    @ManyToMany (cascade = CascadeType.ALL, mappedBy = "publishers")
+    @ManyToMany (cascade = CascadeType.ALL)//, mappedBy = "books")
     @JoinColumn(name = "book_id")
     private List<Books> books;
 
@@ -26,8 +26,32 @@ public class Genres {
     public Genres() {
     }
 
-    public Genres(Long id, String title) {
+    public Genres(Long id, String name) {
         this.id = id;
-        this.title = title;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Books> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Books> books) {
+        this.books = books;
     }
 }

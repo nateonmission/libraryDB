@@ -1,14 +1,18 @@
 package com.librarydb.services;
 
 import com.librarydb.controllers.bookController;
+import com.librarydb.exceptions.InfoExistsException;
+import com.librarydb.models.Genres;
 import com.librarydb.repositories.AuthorRepository;
 import com.librarydb.repositories.BookRepository;
 import com.librarydb.repositories.GenreRepository;
 import com.librarydb.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
+@Service
 public class BookServices {
     private static final Logger LOGGER = Logger.getLogger(bookController.class.getName());
 
@@ -38,6 +42,18 @@ public class BookServices {
     public void setPublisherRepository(PublisherRepository publisherRepository) {
 
         this.publisherRepository = publisherRepository;
+    }
+
+    // POST api/genre
+    public Genres createGenre(Genres genreObject) {
+        LOGGER.info("service calling createGenre ==>");
+
+        Genres genre = genreRepository.findByName(genreObject.getName());
+        if (genre != null) {
+            throw new InfoExistsException("category with name " + genre.getName() + " already exists");
+        } else {
+            return genreRepository.save(genreObject);
+        }
     }
 
 
