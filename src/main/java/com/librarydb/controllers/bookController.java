@@ -57,8 +57,16 @@ public class bookController {
         return "<h1>I'm Alive</h1>";
     }
 
-    // TODO Create Genre = POST	api/genres
-    @PostMapping(path = "/genre")
+    // TODO List All Categories
+    // http://localhost:9092/api/genres
+    @GetMapping("/genres")
+    public List<Genres> getGenres(){
+        LOGGER.info("calling getGenres method from controller");
+        return bookServices.getGenres();
+    }
+
+    // Create Genre = POST	api/genres
+    @PostMapping(path = "/genres")
     public Genres createGenre(@RequestBody Genres genreObject){
         LOGGER.info("calling createGenre method from controller");
         return bookServices.createGenre(genreObject);
