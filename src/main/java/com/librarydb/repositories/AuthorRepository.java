@@ -4,4 +4,5 @@ import com.librarydb.models.Authors;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AuthorRepository extends JpaRepository<Authors, Long> {
+    Authors findByName(String authorsName);
 }
