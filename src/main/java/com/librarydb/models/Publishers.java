@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.awt.print.Book;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,16 +12,16 @@ import java.util.Set;
 public class Publishers {
 
     @Id
-    @Column
+    @Column(name="publisher_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name="publisher_name")
     private String name;
 
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "publisher")
     @JsonIgnore
-    private Set<Books> books;
+    private List<Books> books;
 
     public Publishers() {
     }
@@ -41,11 +42,11 @@ public class Publishers {
         this.name = name;
     }
 
-    public Set<Books> getBooks() {
+    public List<Books> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Books> books) {
+    public void setBooks(List<Books> books) {
         this.books = books;
     }
 }

@@ -12,10 +12,10 @@ import java.util.concurrent.Flow;
 public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name="book_id")
     private Long id;
 
-    @Column
+    @Column(name="book_title")
     private String title;
 
     @Column
@@ -34,19 +34,23 @@ public class Books {
     private boolean isAvailable;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinColumn(name = "genre_id")
-    private List<Genres> genres;
-
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publishers publisher;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinColumn(name = "author_id")
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="books_authors",
+            joinColumns=@JoinColumn(name="book_id"),
+            inverseJoinColumns=@JoinColumn(name="author_id"))
     private List<Authors> authors;
+
+    @JsonIgnore
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="books_genres",
+            joinColumns=@JoinColumn(name="book_id"),
+            inverseJoinColumns=@JoinColumn(name="genre_id"))
+    private List<Genres> genres;
 
 
     public Books() {
