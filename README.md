@@ -23,11 +23,11 @@ efficiently keep track of their books!
 |PUT    |api/authors/{authorID}              |updates specific author       ||
 |DELETE    |api/authors/{authorID}              |deletes specific author       ||
 |       |                                    |                              ||  
-|GET    |api/publishers                      |returns JSON of all publishers||
-|POST    |api/publishers                         |creates new publisher         ||
-|GET    |api/publishers/{publisherID}        |returns JSON for publisher    ||
-|PUT    |api/publishers/{publisherID}        |updates specific publisher    ||
-|DELETE    |api/publishers/{publisherID}        |deletes specific publisher    ||
+|GET    |api/publishers                      |returns JSON of all publishers| X    |
+|POST    |api/publishers                         |creates new publisher         | X    |
+|GET    |api/publishers/{publisherID}        |returns JSON for publisher    |      |
+|PUT    |api/publishers/{publisherID}        |updates specific publisher    | X    |
+|DELETE    |api/publishers/{publisherID}        |deletes specific publisher    | X    |
 |       |                                    |                              ||
 |GET    |api/genres                             |returns a list of genres  | X    |
 |POST    |api/genres                             |creates new genre             | X    |

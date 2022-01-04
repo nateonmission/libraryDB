@@ -4,6 +4,7 @@ import com.librarydb.controllers.bookController;
 import com.librarydb.exceptions.InfoExistsException;
 import com.librarydb.exceptions.InfoNotFoundException;
 import com.librarydb.models.Genres;
+import com.librarydb.models.Publishers;
 import com.librarydb.repositories.AuthorRepository;
 import com.librarydb.repositories.BookRepository;
 import com.librarydb.repositories.GenreRepository;
@@ -86,6 +87,7 @@ public class BookServices {
         }
     }
 
+    // DELETE api/genres/{genreID}
     public Genres deleteGenre( Long genreID) {
         LOGGER.info("calling deleteCategory method ==>");
 
@@ -95,6 +97,57 @@ public class BookServices {
             return genre.get();
         } else {
             throw new InfoNotFoundException("category with id: " + genreID + " does NOT exists");
+        }
+    }
+
+    // PUBLISHERS
+    // GET api/genres
+    public List<Publishers> getPublishers() {
+        LOGGER.info("service calling getPublishers ==>");
+
+        List<Publishers> publishers = publisherRepository.findAll();
+        if (publishers.isEmpty()) {
+            throw new InfoNotFoundException("no publishers found");
+        } else {
+            return publishers;
+        }
+    }
+
+    // POST api/genres
+    public Publishers createPublisher(Publishers publisherObject) {
+        LOGGER.info("service calling createPublisher ==>");
+
+        Publishers pub = publisherRepository.findByName(publisherObject.getName());
+        if (pub != null) {
+            throw new InfoExistsException("publisher with name " + pub.getName() + " already exists");
+        } else {
+            return publisherRepository.save(publisherObject);
+        }
+    }
+
+    // PUT api/publishers/{pub_ID}
+    public Publishers updatePublisher( Long pubID, Publishers publisherObject) {
+        LOGGER.info("calling updatePublisher method ==> ");
+
+        Optional<Publishers> pub = publisherRepository.findById(pubID);
+        if (pub == null) {
+            throw new InfoNotFoundException("publisher with id " + pubID + " not found");
+        } else {
+            pub.get().setName(publisherObject.getName());
+            return publisherRepository.save(pub.get());
+        }
+    }
+
+    // DELETE api/publishers/{pubID}
+    public Publishers deletePublisher( Long pubID) {
+        LOGGER.info("calling deletePublisher method ==>");
+
+        Optional<Publishers> pub = publisherRepository.findById(pubID);
+        if (pub != null) {
+            publisherRepository.deleteById(pubID);
+            return pub.get();
+        } else {
+            throw new InfoNotFoundException("publisher with id: " + pubID + " does NOT exists");
         }
     }
 
