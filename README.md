@@ -25,6 +25,7 @@ efficiently keep track of their books!
 |        |                                    |                                ||  
 | GET    |api/publishers                      | returns JSON of all publishers | X    |
 | POST   |api/publishers                         | creates new publisher          | X    |
+| GET    |api/publishers/{publisherID}        | get single publisher           | X    |
 | PUT    |api/publishers/{publisherID}        | updates specific publisher     | X    |
 | DELETE |api/publishers/{publisherID}        | deletes specific publisher     | X    |
 |        |                                    |                                ||
@@ -33,8 +34,8 @@ efficiently keep track of their books!
 | GET    |api/genres/{genreID}                 | get single genre               | X    |
 | PUT    |api/genres/{genreID}                 | updates                        | X    |
 | DELETE |api/genres/{genreID}                 | deletes                        | X    |
-| GET    |api/genres/{genreID}/books             | returns JSON of books in genre ||
 |        |                                    |                                ||
+| GET    |api/genres/{genreID}/books             | returns JSON of books in genre ||
 | GET    |api/authors/{authorID}/books        | returns JSON of author's books ||
 | GET    |api/books/{bookID}/author             | returns JSON of book's authors | X    |
 | GET    |api/publishers/{publisherID}/books  | returns JSON of pub's books    ||
