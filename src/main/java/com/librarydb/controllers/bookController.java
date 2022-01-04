@@ -73,4 +73,12 @@ public class bookController {
         return bookServices.createGenre(genreObject);
     }
 
+    // Update Genre
+    // POST to http://localhost:9092/api/genres/genre_id
+    @PutMapping(path = "/genres/{genreID}")
+    public Genres updateGenre(@PathVariable(value = "genreID") Long genreID, @RequestBody Genres genreObject){
+        LOGGER.info("calling updateGenre method from controller");
+        return bookServices.updateGenre(genreID, genreObject);
+    }
+
 }

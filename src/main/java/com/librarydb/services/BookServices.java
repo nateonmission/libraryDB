@@ -10,8 +10,11 @@ import com.librarydb.repositories.GenreRepository;
 import com.librarydb.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -67,6 +70,19 @@ public class BookServices {
             throw new InfoExistsException("category with name " + genre.getName() + " already exists");
         } else {
             return genreRepository.save(genreObject);
+        }
+    }
+
+    // PUT api/genres/{genre_ID}
+    public Genres updateGenre( Long genreID, Genres genreObject) {
+        LOGGER.info("calling updateGenre method ==> ");
+
+        Optional<Genres> genre = genreRepository.findById(genreID);
+        if (genre == null) {
+            throw new InfoNotFoundException("category with id " + genreID + " not found");
+        } else {
+            genre.get().setName(genreObject.getName());
+            return genreRepository.save(genre.get());
         }
     }
 
