@@ -161,6 +161,13 @@ public class bookController {
         return bookServices.createGenre(genreObject);
     }
 
+    // Get a single Genre
+    @GetMapping(path = "/genres/{genre_ID}")
+    public Optional getGenre(@PathVariable Long genreId) {
+        LOGGER.info("controller calling getGenre ==>");
+        return bookServices.getGenre(genreId);
+    }
+
     // Update a Genre
     // POST to http://localhost:9092/api/genres/genre_id
     @PutMapping(path = "/genres/{genreID}")
@@ -192,6 +199,13 @@ public class bookController {
     public Publishers createPublisher(@RequestBody Publishers pubObject){
         LOGGER.info("calling createPublisher method from controller");
         return bookServices.createPublisher(pubObject);
+    }
+
+    // Get a single Publisher
+    @GetMapping(path = "/publishers/{publisher_ID}")
+    public Optional getPublisher(@PathVariable Long publisherId) {
+        LOGGER.info("controller calling getPublisher ==>");
+        return bookServices.getPublisher(publisherId);
     }
 
     // Update Publisher
