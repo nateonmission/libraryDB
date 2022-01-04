@@ -14,8 +14,10 @@ public class bookController {
 
     @GetMapping("/")
     public String isAlive(){
-        LOGGER.info("calling getCategory method from controller");
+        LOGGER.info("calling isAlive method from controller");
         return "<h1>I'm Alive</h1>";
     }
+
+
 
 }
