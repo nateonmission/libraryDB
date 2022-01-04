@@ -86,13 +86,13 @@ public class bookController {
 //        return bookServices.updateGenre(genreID, genreObject);
 //    }
 //
-//    // Delete a Genre
-//    // DELETE to http://localhost:9092/api/categories/genre_id
-//    @DeleteMapping(path = "/genres/{genreID}")
-//    public Genres deleteCategory(@PathVariable(value = "genreID") Long genreID){
-//        LOGGER.info("calling deleteCategory method from controller");
-//        return bookServices.deleteGenre(genreID);
-//    }
+    // Delete a Genre
+    // DELETE to http://localhost:9092/api/books/{book_id}
+    @DeleteMapping(path = "/books/{bookID}")
+    public Books deleteBook(@PathVariable(value = "bookID") Long bookID){
+        LOGGER.info("calling deleteBook method from controller");
+        return bookServices.deleteBook(bookID);
+    }
 
 
 

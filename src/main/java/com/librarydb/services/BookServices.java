@@ -71,6 +71,7 @@ public class BookServices {
         if (book != null) {
             throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
         } else {
+            System.out.println(bookObject.getPublisher());
             return bookRepository.save(bookObject);
         }
     }
@@ -88,18 +89,18 @@ public class BookServices {
 //        }
 //    }
 //
-//    // DELETE api/genres/{genreID}
-//    public Genres deleteGenre( Long genreID) {
-//        LOGGER.info("calling deleteCategory method ==>");
-//
-//        Optional<Genres> genre = genreRepository.findById(genreID);
-//        if (genre != null) {
-//            genreRepository.deleteById(genreID);
-//            return genre.get();
-//        } else {
-//            throw new InfoNotFoundException("category with id: " + genreID + " does NOT exists");
-//        }
-//    }
+    // DELETE api/books/{bookID}
+    public Books deleteBook( Long bookID) {
+        LOGGER.info("calling deleteBook method ==>");
+
+        Optional<Books> book = bookRepository.findById(bookID);
+        if (book != null) {
+            bookRepository.deleteById(bookID);
+            return book.get();
+        } else {
+            throw new InfoNotFoundException("category with id: " + bookID + " does NOT exists");
+        }
+    }
 
 
 

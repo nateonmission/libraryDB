@@ -22,6 +22,11 @@ public class Authors {
     @JsonIgnore
     private Set<Books> books;
 
+    @ManyToOne
+    @JoinColumn (name = "publishers")
+    @JsonIgnore
+    private Publishers publishers;
+
     public Authors() {
     }
 

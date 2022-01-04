@@ -2,9 +2,12 @@ package com.librarydb.models;
 
 import com.librarydb.models.Genres;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Flow;
 
 @Entity
@@ -36,7 +39,8 @@ public class Books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "genre_id")
-    private List<Genres> genres;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Genres> genres;
 
     @JsonIgnore
     @ManyToOne
@@ -46,13 +50,14 @@ public class Books {
     @JsonIgnore
     @ManyToMany
     @JoinColumn(name = "author_id")
-    private List<Authors> authors;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<Authors> authors;
 
 
     public Books() {
     }
 
-    public Books(String title, List<Genres> genres, Publishers publisher, List<Authors> authors) {
+    public Books(String title, Set<Genres> genres, Publishers publisher, Set<Authors> authors) {
         this.title = title;
         this.genres = genres;
         this.publisher = publisher;
@@ -115,11 +120,11 @@ public class Books {
         isAvailable = available;
     }
 
-    public List<Genres> getGenres() {
+    public Set<Genres> getGenres() {
         return genres;
     }
 
-    public void setGenre(List<Genres> genres) {
+    public void setGenre(Set<Genres> genres) {
         this.genres = genres;
     }
 
@@ -131,11 +136,11 @@ public class Books {
         this.publisher = publisher;
     }
 
-    public List<Authors> getAuthors() {
+    public Set<Authors> getAuthors() {
         return authors;
     }
 
-    public void setAuthor(List<Authors> authors) {
+    public void setAuthor(Set<Authors> authors) {
         this.authors = authors;
     }
 }
