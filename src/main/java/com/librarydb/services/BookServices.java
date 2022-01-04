@@ -13,8 +13,6 @@ import com.librarydb.repositories.GenreRepository;
 import com.librarydb.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -136,8 +134,29 @@ public class BookServices {
     }
 
     // GET api/books/{book_ID}/authors
+    public List<Authors> getBookAuthors(Long booksId) {
+        LOGGER.info("service calling getBookAuthors ==>");
+        List<Authors> authors = authorRepository.findByBooksId(booksId);
+        if(authors.isEmpty()) {
+            throw new InfoNotFoundException("Cannot retrieve authors for book with id "
+                    + booksId + "that does not exist");
+        } else {
+            return authors;
+        }
+    }
 
     // GET api/publishers/{publisher_ID}/authors
+    public List<Authors> getPublisherAuthors(Long publishersId) {
+        LOGGER.info("service calling getPublisherAuthors ==>");
+        List<Authors> authors = authorRepository.findByPublishersId(publishersId);
+        if(authors.isEmpty()) {
+            throw new InfoNotFoundException("Cannot retrieve authors for a publisher with id "
+                    + publishersId + "that does not exist");
+        } else {
+            return authors;
+        }
+    }
+
 
     // PUT api/authors/{author_ID}
     public Authors updateAuthor(Long authorId, Authors authorObject) {
