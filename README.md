@@ -17,11 +17,11 @@ efficiently keep track of their books!
 |PUT    |api/books/{bookID}                  |updates specific book         ||
 |DELETE    |api/books/{bookID}                  |deletes specific book         ||
 |       |                                    |                              ||
-|GET    |api/authors                         |returns JSON of all authors   ||
-|POST    |api/authors                         |creates new author            ||
+|GET    |api/authors                         |returns all authors   | X    |
+|POST    |api/authors                         |creates new author            | X    |
 |GET    |api/authors/{authorID}                 |returns JSON for author       ||
-|PUT    |api/authors/{authorID}              |updates specific author       ||
-|DELETE    |api/authors/{authorID}              |deletes specific author       ||
+|PUT    |api/authors/{authorID}              |updates specific author       | X    |
+|DELETE    |api/authors/{authorID}              |deletes specific author       | X    |
 |       |                                    |                              ||  
 |GET    |api/publishers                      |returns JSON of all publishers| X    |
 |POST    |api/publishers                         |creates new publisher         | X    |
