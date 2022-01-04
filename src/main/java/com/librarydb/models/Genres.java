@@ -17,16 +17,16 @@ public class Genres {
     private String title;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL, mappedBy = "publishers")
     @JoinColumn(name = "book_id")
     private List<Books> books;
 
 
 
-    public genres() {
+    public Genres() {
     }
 
-    public genres(Long id, String title) {
+    public Genres(Long id, String title) {
         this.id = id;
         this.title = title;
     }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.concurrent.Flow;
 
 @Entity
 @Table(name ="books")
@@ -40,7 +41,7 @@ public class Books {
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    private Publisher publisher;
+    private Publishers publisher;
 
     @JsonIgnore
     @ManyToMany
@@ -51,7 +52,7 @@ public class Books {
     public Books() {
     }
 
-    public Books(String title, List<Genres> genres, Publisher publisher, List<Authors> authors) {
+    public Books(String title, List<Genres> genres, Publishers publisher, List<Authors> authors) {
         this.title = title;
         this.genres = genres;
         this.publisher = publisher;
@@ -122,11 +123,11 @@ public class Books {
         this.genres = genres;
     }
 
-    public Publisher getPublisher() {
+    public Publishers getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(Publisher publisher) {
+    public void setPublisher(Publishers publisher) {
         this.publisher = publisher;
     }
 
