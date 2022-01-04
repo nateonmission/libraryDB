@@ -15,7 +15,7 @@ efficiently keep track of their books!
 | POST   |api/books                           | reates new book                ||
 | GET    |api/books/{bookID}                  | returns JSON for book          ||
 | PUT    |api/books/{bookID}                  | updates specific book          ||
-| DELETE |api/books/{bookID}                  | deletes specific book          ||
+| DELETE |api/books/{bookID}                  | deletes specific book          | X    |
 |        |                                    |                                ||
 | GET    |api/authors                         | returns all authors            | X    |
 | POST   |api/authors                         | creates new author             | X    |
