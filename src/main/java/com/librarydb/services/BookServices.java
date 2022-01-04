@@ -4,6 +4,7 @@ import com.librarydb.controllers.bookController;
 import com.librarydb.exceptions.InfoExistsException;
 import com.librarydb.exceptions.InfoNotFoundException;
 import com.librarydb.models.Authors;
+import com.librarydb.models.Books;
 import com.librarydb.models.Genres;
 import com.librarydb.models.Publishers;
 import com.librarydb.repositories.AuthorRepository;
@@ -51,6 +52,60 @@ public class BookServices {
         this.publisherRepository = publisherRepository;
     }
 
+    //BOOKS
+    // GET api/genres
+//    public List<Genres> getGenres() {
+//        LOGGER.info("service calling getGenres ==>");
+//
+//        List<Genres> genres = genreRepository.findAll();
+//        if (genres.isEmpty()) {
+//            throw new InfoNotFoundException("no categories found");
+//        } else {
+//            return genres;
+//        }
+//    }
+
+    // POST api/genres
+    public Books createBook(Books bookObject) {
+        LOGGER.info("service calling createBook ==>");
+
+        Books book = bookRepository.findByTitle(bookObject.getTitle());
+        if (book != null) {
+            throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
+        } else {
+            return bookRepository.save(bookObject);
+        }
+    }
+
+//    // PUT api/genres/{genre_ID}
+//    public Genres updateGenre( Long genreID, Genres genreObject) {
+//        LOGGER.info("calling updateGenre method ==> ");
+//
+//        Optional<Genres> genre = genreRepository.findById(genreID);
+//        if (genre == null) {
+//            throw new InfoNotFoundException("category with id " + genreID + " not found");
+//        } else {
+//            genre.get().setName(genreObject.getName());
+//            return genreRepository.save(genre.get());
+//        }
+//    }
+//
+//    // DELETE api/genres/{genreID}
+//    public Genres deleteGenre( Long genreID) {
+//        LOGGER.info("calling deleteCategory method ==>");
+//
+//        Optional<Genres> genre = genreRepository.findById(genreID);
+//        if (genre != null) {
+//            genreRepository.deleteById(genreID);
+//            return genre.get();
+//        } else {
+//            throw new InfoNotFoundException("category with id: " + genreID + " does NOT exists");
+//        }
+//    }
+
+
+
+    // AUTHORS
     // GET api/authors
     public List<Authors> getAuthors() {
         LOGGER.info("service calling getAuthors ==>");
@@ -89,14 +144,11 @@ public class BookServices {
         LOGGER.info("service calling updateAuthor ==>");
         Optional<Authors> author = authorRepository.findById(authorId);
         if (author.isPresent()) {
-            if (authorObject.getName().equals(author.get().getName())) {
-                throw new InfoExistsException("Author "
-                        + author.get().getName() + " already exists");
-            } else {
+
                 Authors updateAuthor = authorRepository.findById(authorId).get();
                 updateAuthor.setName(authorObject.getName());
                 return authorRepository.save(updateAuthor);
-            }
+
         } else {
             throw new InfoNotFoundException("author with id " + authorId + " not found");
         }

@@ -1,6 +1,7 @@
 package com.librarydb.controllers;
 
 import com.librarydb.models.Authors;
+import com.librarydb.models.Books;
 import com.librarydb.models.Genres;
 import com.librarydb.models.Publishers;
 import com.librarydb.repositories.AuthorRepository;
@@ -60,6 +61,41 @@ public class bookController {
         return "<h1>I'm Alive</h1>";
     }
 
+    // BOOKS
+//    //  List All Genres
+//    // http://localhost:9092/api/genres
+//    @GetMapping("/genres")
+//    public List<Genres> getGenres(){
+//        LOGGER.info("calling getGenres method from controller");
+//        return bookServices.getGenres();
+//    }
+
+    // Create a Genre = POST	api/BOOKS
+    // http://localhost:9092/api/books
+    @PostMapping(path = "/books")
+    public Books createBook(@RequestBody Books bookObject){
+        LOGGER.info("calling createBook method from controller");
+        return bookServices.createBook(bookObject);
+    }
+//
+//    // Update a Genre
+//    // POST to http://localhost:9092/api/genres/genre_id
+//    @PutMapping(path = "/genres/{genreID}")
+//    public Genres updateGenre(@PathVariable(value = "genreID") Long genreID, @RequestBody Genres genreObject){
+//        LOGGER.info("calling updateGenre method from controller");
+//        return bookServices.updateGenre(genreID, genreObject);
+//    }
+//
+//    // Delete a Genre
+//    // DELETE to http://localhost:9092/api/categories/genre_id
+//    @DeleteMapping(path = "/genres/{genreID}")
+//    public Genres deleteCategory(@PathVariable(value = "genreID") Long genreID){
+//        LOGGER.info("calling deleteCategory method from controller");
+//        return bookServices.deleteGenre(genreID);
+//    }
+
+
+
     // GET all authors
     @GetMapping(path = "/authors")
     public List<Authors> getAuthors() {
@@ -86,7 +122,7 @@ public class bookController {
     // GET a publisher's authors
 
     // PUT update an author
-    @PutMapping(path = "/authors/{author_ID}")
+    @PutMapping(path = "/authors/{authorId}")
     public Authors updateAuthor(@PathVariable(value="authorId") Long authorId,
                                 @RequestBody Authors authorObject) {
         LOGGER.info("controller calling updateAuthor ==>");
@@ -94,7 +130,7 @@ public class bookController {
     }
 
     // DEL delete an author
-    @DeleteMapping(path = "/authors/{author_ID}")
+    @DeleteMapping(path = "/authors/{authorId}")
     public Optional<Authors> deleteAuthor(@PathVariable(value="authorId") Long authorId) {
         return bookServices.deleteAuthor(authorId);
     }
