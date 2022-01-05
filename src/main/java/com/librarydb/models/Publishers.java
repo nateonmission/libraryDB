@@ -1,6 +1,7 @@
 package com.librarydb.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.awt.print.Book;
@@ -21,8 +22,15 @@ public class Publishers {
     @Column(name="publisher_name")
     private String name;
 
-    @OneToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "publisher")
-    @JsonIgnore
+//    @OneToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "publisher")
+//    @JsonIgnore
+//    private Set<Books> books;
+
+    @JsonIgnoreProperties("publishers")
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "publisher_book", joinColumns = {@JoinColumn(name = "publisher_id")}, inverseJoinColumns =
+    @JoinColumn(name = "book_id")
+    )
     private Set<Books> books;
 
     public Publishers() {
@@ -48,8 +56,9 @@ public class Publishers {
         return books;
     }
 
-    public void setBooks(Set<Books> book) {
-        this.books = book;
+    public void setBooks(Books books) {
+        this.getBooks().add(books);
+        books.getPublishers().add(this);
     }
 }
 

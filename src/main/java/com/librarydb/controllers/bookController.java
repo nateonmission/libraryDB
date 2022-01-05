@@ -83,21 +83,21 @@ public class bookController {
 
     // GET an author's books
     @GetMapping(path = "/authors/{authorId}/books")
-    public List<Books> getAuthorBooks(@PathVariable Long authorsId) {
+    public Set<Books> getAuthorBooks(@PathVariable Long authorsId) {
         LOGGER.info("controller calling getAuthorBooks ==>");
         return bookServices.getAuthorBooks(authorsId);
     }
 
     // GET a publisher's books
     @GetMapping(path = "/publishers/{publisherId}/books")
-    public List<Books> getPublisherBooks(@PathVariable Long publishersId) {
+    public Set<Books> getPublisherBooks(@PathVariable Long publishersId) {
         LOGGER.info("controller calling getPublisherBooks ==>");
         return bookServices.getPublisherBooks(publishersId);
     }
 
     // GET a genre's books
     @GetMapping(path = "/genres/{genreId}/books")
-    public List<Books> getGenreBooks(@PathVariable Long genresId) {
+    public Set<Books> getGenreBooks(@PathVariable Long genresId) {
         LOGGER.info("controller calling getGenreBooks ==>");
         return bookServices.getGenreBooks(genresId);
     }

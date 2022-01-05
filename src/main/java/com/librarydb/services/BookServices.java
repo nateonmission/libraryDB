@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Service
@@ -72,9 +73,9 @@ public class BookServices {
 
     // TODO
     // GET an author's books
-    public List<Books> getAuthorBooks(Long authorsId) {
+    public Set<Books> getAuthorBooks(Long authorsId) {
         LOGGER.info("service calling getAuthorBooks ==>");
-        List<Books> books = bookRepository.findByAuthorsId(authorsId);
+        Set<Books> books = bookRepository.findByAuthorsId(authorsId);
         if(books.isEmpty()) {
             throw new InfoNotFoundException("Cannot retrieve books for an author with id "
                     + authorsId + "that does not exist");
@@ -85,9 +86,9 @@ public class BookServices {
 
     // TODO
     // GET a publisher's books
-    public List<Books> getPublisherBooks(Long publishersId) {
+    public Set<Books> getPublisherBooks(Long publishersId) {
         LOGGER.info("service calling getPublisherBooks ==>");
-        List<Books> books = bookRepository.findBooksByPublisherId(publishersId);
+        Set<Books> books = bookRepository.findBooksByPublishersId(publishersId);
         if(books.isEmpty()) {
             throw new InfoNotFoundException("Cannot retrieve books for publisher with id "
                     + publishersId + "that does not exist");
@@ -98,9 +99,9 @@ public class BookServices {
 
     // TODO
     // GET a genre's books
-    public List<Books> getGenreBooks(Long genresId) {
+    public Set<Books> getGenreBooks(Long genresId) {
         LOGGER.info("service calling getGenreBooks ==>");
-        List<Books> books = bookRepository.findByGenresId(genresId);
+        Set<Books> books = bookRepository.findByGenresId(genresId);
         if(books.isEmpty()) {
             throw new InfoNotFoundException("Cannot retrieve books for genre with id "
                     + genresId + "that does not exist");

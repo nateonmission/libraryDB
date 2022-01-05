@@ -37,27 +37,28 @@ public class Books {
     @Column
     private boolean isAvailable;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "publisher_id")
-    private Publishers publisher;
-
-//    @JsonIgnoreProperties("books_authors")
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinTable(name="books_authors",
-//            joinColumns=@JoinColumn(name="book_id"),
-//            inverseJoinColumns=@JoinColumn(name="author_id"))
-//    private Set<Authors> authors;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "publisher_id")
+//    private Publishers publisher;
 
     @JsonIgnoreProperties("books")
     @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Authors> authors;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "books_genres",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    @JsonIgnoreProperties("books")
+    @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Publishers> publishers;
+
+    @JsonIgnoreProperties("books")
+    @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Genres> genres;
+
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(name = "books_genres",
+//            joinColumns = @JoinColumn(name = "book_id"),
+//            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+//    private Set<Genres> genres;
 
     public Books() {
     }
@@ -136,13 +137,7 @@ public class Books {
         genre.getBooks().remove(this);
     }
 
-    public Publishers getPublisher() {
-        return publisher;
-    }
 
-    public void setPublisher(Publishers publisher) {
-        this.publisher = publisher;
-    }
 
     public Set<Authors> getAuthors() {
         return authors;
@@ -160,5 +155,13 @@ public class Books {
     public void removeAuthor(Authors author) {
         this.authors.remove(author);
         author.getBooks().remove(this);
+    }
+
+    public Set<Publishers> getPublishers() {
+        return publishers;
+    }
+
+    public void setPublishers(Set<Publishers> publishers) {
+        this.publishers = publishers;
     }
 }
