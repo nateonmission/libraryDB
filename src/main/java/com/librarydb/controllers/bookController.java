@@ -119,7 +119,11 @@ public class bookController {
 
     // Update book author
     @PutMapping(path = "/authors/books/{authorID}")
-    public Authors putBookAuthor(@PathVariable(value = "authorID") int authorID, @RequestBody HashMap<String, ArrayList<Integer>> books) {
+    public Authors putBookAuthor(
+            @PathVariable(value = "authorID") int authorID,
+            @RequestBody HashMap<String,
+                    ArrayList<Integer>> books
+    ) {
         LOGGER.info("calling updateBookAuthor method from controller");
 //        ArrayList<Integer> bookIds = books.get("books");
 //        Authors currentAuthor = authorRepository.findById((long) authorID).get();
@@ -130,6 +134,28 @@ public class bookController {
 //        }
 //        return authorRepository.save(currentAuthor);
         return bookServices.putBookAuthor(authorID, books);
+    }
+
+    // Update book genre
+    @PutMapping(path = "/genres/books/{genreID}")
+    public Genres putBookGenres(
+            @PathVariable(value = "genreID") int genreID,
+            @RequestBody HashMap<String,
+                    ArrayList<Integer>> books
+    ) {
+        LOGGER.info("calling updateBookGenre method from controller");
+        return bookServices.putBookGenres(genreID, books);
+    }
+
+    // Update book publisher
+    @PutMapping(path = "/publishers/books/{publisherID}")
+    public Publishers putBookPublishers(
+            @PathVariable(value = "publishersID") int publisherID,
+            @RequestBody HashMap<String,
+                    ArrayList<Integer>> books
+    ) {
+        LOGGER.info("calling updateBookPublishers method from controller");
+        return bookServices.putBookPublishers(publisherID, books);
     }
 
     // Delete a Book
