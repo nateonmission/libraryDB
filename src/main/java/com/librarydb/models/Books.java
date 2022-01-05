@@ -37,11 +37,6 @@ public class Books {
     @Column
     private boolean isAvailable;
 
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(name = "publisher_id")
-//    private Publishers publisher;
-
     @JsonIgnoreProperties("books")
     @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Authors> authors;
@@ -53,12 +48,6 @@ public class Books {
     @JsonIgnoreProperties("books")
     @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Genres> genres;
-
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinTable(name = "books_genres",
-//            joinColumns = @JoinColumn(name = "book_id"),
-//            inverseJoinColumns = @JoinColumn(name = "genre_id"))
-//    private Set<Genres> genres;
 
     public Books() {
     }

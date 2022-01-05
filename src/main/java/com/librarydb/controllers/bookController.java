@@ -118,7 +118,8 @@ public class bookController {
 
     // Update book author
     @PutMapping(path = "/authors/books/{authorID}")
-    public Authors putBookAuthor(@PathVariable(value = "authorID") int authorID, @RequestBody HashMap<String, ArrayList<Integer>> books) {
+    public Authors putBookAuthor(@PathVariable(value = "authorID") int authorID,
+                                 @RequestBody HashMap<String, ArrayList<Integer>> books) {
         ArrayList<Integer> bookIds = books.get("books");
         Authors currentAuthor = authorRepository.findById((long) authorID).get();
         for (int bookId : bookIds) {
