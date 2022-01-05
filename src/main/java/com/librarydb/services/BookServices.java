@@ -73,12 +73,16 @@ public class BookServices {
         }
     }
 
+    // TODO
     // GET an author's books
 
+    // TODO
     // GET a publisher's books
 
+    // TODO
     // GET a genre's books
 
+    // TODO
     // POST api/books
     public Books createBook(Books bookObject) {
         LOGGER.info("service calling createBook ==>");
