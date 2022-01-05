@@ -12,7 +12,7 @@ efficiently keep track of their books!
 | Method |Endpoints                           | Description                    | Done |
 |--------|------------------------------------|--------------------------------|------|
 | GET    |api/books                           | returns all books              | X    |
-| POST   |api/books                           | creates new book               ||
+| POST   |api/books                           | creates new book               | X    |
 | GET    |api/books/{bookID}                  | returns a book                 | X    |
 | PUT    |api/books/{bookID}                  | updates specific book          | X    |
 | DELETE |api/books/{bookID}                  | deletes specific book          | X    |

@@ -112,22 +112,23 @@ public class bookController {
     // PUT Update a Book
     @PutMapping(path = "/books/{book_ID}")
     public Books updateBook(@PathVariable(value = "bookId") Long bookId, @RequestBody Books bookObject) {
-        LOGGER.info("calling uypdateBook method from controller");
+        LOGGER.info("calling updateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
     }
 
     // Update book author
     @PutMapping(path = "/authors/books/{authorID}")
-    public Authors putBookAuthor(@PathVariable(value = "authorID") int authorID,
-                                 @RequestBody HashMap<String, ArrayList<Integer>> books) {
-        ArrayList<Integer> bookIds = books.get("books");
-        Authors currentAuthor = authorRepository.findById((long) authorID).get();
-        for (int bookId : bookIds) {
-            if (!bookRepository.existsById((long) bookId))
-                throw new InfoNotFoundException("Book not found");
-            currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
-        }
-        return authorRepository.save(currentAuthor);
+    public Authors putBookAuthor(@PathVariable(value = "authorID") int authorID, @RequestBody HashMap<String, ArrayList<Integer>> books) {
+        LOGGER.info("calling updateBookAuthor method from controller");
+//        ArrayList<Integer> bookIds = books.get("books");
+//        Authors currentAuthor = authorRepository.findById((long) authorID).get();
+//        for (int bookId : bookIds) {
+//            if (!bookRepository.existsById((long) bookId))
+//                throw new InfoNotFoundException("Book not found");
+//            currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
+//        }
+//        return authorRepository.save(currentAuthor);
+        return bookServices.putBookAuthor(authorID, books);
     }
 
     // Delete a Book
