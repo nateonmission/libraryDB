@@ -3,9 +3,7 @@ package com.librarydb.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.awt.print.Book;
-import java.util.HashSet;
-import java.util.List;
+
 import java.util.Set;
 
 @Entity

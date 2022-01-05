@@ -4,10 +4,6 @@ import com.librarydb.models.Authors;
 import com.librarydb.models.Books;
 import com.librarydb.models.Genres;
 import com.librarydb.models.Publishers;
-import com.librarydb.repositories.AuthorRepository;
-import com.librarydb.repositories.BookRepository;
-import com.librarydb.repositories.GenreRepository;
-import com.librarydb.repositories.PublisherRepository;
 import com.librarydb.services.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,29 +24,7 @@ public class bookController {
         this.bookServices = bookServices;
     }
 
-    private BookRepository bookRepository;
-    @Autowired
-    public void setBookRepository(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
-    private AuthorRepository authorRepository;
-    @Autowired
-    public void setAuthorRepository(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
-    }
-
-    private GenreRepository genreRepository;
-    @Autowired
-    public void setGenreRepository(GenreRepository genreRepository) {
-        this.genreRepository = genreRepository;
-    }
-
-    private PublisherRepository publisherRepository;
-    @Autowired
-    public void setPublisherRepository(PublisherRepository publisherRepository) {
-        this.publisherRepository = publisherRepository;
-    }
 
     @GetMapping("/")
     public String isAlive(){
@@ -67,28 +41,28 @@ public class bookController {
     }
 
     // GET a single Book
-    @GetMapping(path = "/books/{book_ID}")
+    @GetMapping(path = "/books/{bookId}")
     public Optional getBook(@PathVariable Long bookId) {
         LOGGER.info("controller calling getBook ==>");
         return bookServices.getBook(bookId);
     }
 
     // GET an author's books
-    @GetMapping(path = "/authors/{author_ID}/books")
+    @GetMapping(path = "/authors/{authorId}/books")
     public List<Books> getAuthorBooks(@PathVariable Long authorsId) {
         LOGGER.info("controller calling getAuthorBooks ==>");
         return bookServices.getAuthorBooks(authorsId);
     }
 
     // GET a publisher's books
-    @GetMapping(path = "/publishers/{publisher_ID}/books")
+    @GetMapping(path = "/publishers/{publisherId}/books")
     public List<Books> getPublisherBooks(@PathVariable Long publishersId) {
         LOGGER.info("controller calling getPublisherBooks ==>");
         return bookServices.getPublisherBooks(publishersId);
     }
 
     // GET a genre's books
-    @GetMapping(path = "/genres/{genre_ID}/books")
+    @GetMapping(path = "/genres/{genreId}/books")
     public List<Books> getGenreBooks(@PathVariable Long genresId) {
         LOGGER.info("controller calling getGenreBooks ==>");
         return bookServices.getGenreBooks(genresId);
@@ -102,15 +76,15 @@ public class bookController {
     }
 
     // PUT Update a Book
-    @PutMapping(path = "/books/{book_ID}")
+    @PutMapping(path = "/books/{bookID}")
     public Books updateBook(Long bookId, Books bookObject){
         LOGGER.info("calling uypdateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
     }
 
     // Delete a Book
-    @DeleteMapping(path = "/books/{bookID}")
-    public Books deleteBook(@PathVariable(value = "bookID") Long bookID){
+    @DeleteMapping(path = "/books/{bookId}")
+    public Books deleteBook(@PathVariable(value = "bookId") Long bookID){
         LOGGER.info("calling deleteBook method from controller");
         return bookServices.deleteBook(bookID);
     }
@@ -130,21 +104,21 @@ public class bookController {
     }
 
     // GET a single author
-    @GetMapping(path = "/authors/{author_ID}")
+    @GetMapping(path = "/authors/{authorId}")
     public Optional getAuthor(@PathVariable Long authorId) {
         LOGGER.info("controller calling getAuthor ==>");
         return bookServices.getAuthor(authorId);
     }
 
     // GET a book's authors
-    @GetMapping(path = "/books/{book_ID}/authors")
+    @GetMapping(path = "/books/{bookId}/authors")
     public List<Authors> getBookAuthors(@PathVariable Long booksId) {
         LOGGER.info("controller calling getBookAuthors ==>");
         return bookServices.getBookAuthors(booksId);
     }
 
     // GET a publisher's authors
-    @GetMapping(path = "/publishers/{publisher_ID}/authors")
+    @GetMapping(path = "/publishers/{publishersId}/authors")
     public List<Authors> getPublisherAuthors(@PathVariable Long publishersId) {
         LOGGER.info("controller calling getPublisherAuthors ==>");
         return bookServices.getPublisherAuthors(publishersId);
