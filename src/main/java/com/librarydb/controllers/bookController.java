@@ -26,13 +26,39 @@ public class bookController {
     private static final Logger LOGGER = Logger.getLogger(bookController.class.getName());
 
     // JavaBeans POJO - One Instance for whole class
-    private BookServices bookServices;
-
+    private BookRepository bookRepository;
     @Autowired
-    public void setBookService(BookServices bookServices) {
-        this.bookServices = bookServices;
+    public void setBookRepository(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
+    private AuthorRepository authorRepository;
+    @Autowired
+    public void setAuthorRepository(AuthorRepository authorRepository) {
+
+        this.authorRepository = authorRepository;
+    }
+
+    private GenreRepository genreRepository;
+    @Autowired
+    public void setGenreRepository(GenreRepository genreRepository) {
+
+        this.genreRepository = genreRepository;
+    }
+
+    private PublisherRepository publisherRepository;
+    @Autowired
+    public void setPublisherRepository(PublisherRepository publisherRepository) {
+
+        this.publisherRepository = publisherRepository;
+    }
+
+    private BookServices bookServices;
+    @Autowired
+    public void setBookServices(BookServices bookServices) {
+
+        this.bookServices = bookServices;
+    }
 
     @GetMapping("/")
     public String isAlive() {
