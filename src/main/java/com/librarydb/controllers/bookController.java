@@ -62,15 +62,15 @@ public class bookController {
     }
 
     // BOOKS
-//    //  List All Genres
+//    //  List All Books
 //    // http://localhost:9092/api/genres
-//    @GetMapping("/genres")
+//    @GetMapping("/books")
 //    public List<Genres> getGenres(){
 //        LOGGER.info("calling getGenres method from controller");
 //        return bookServices.getGenres();
 //    }
 
-    // Create a Genre = POST	api/BOOKS
+    // Create a Book = POST	api/BOOKS
     // http://localhost:9092/api/books
     @PostMapping(path = "/books")
     public Books createBook(@RequestBody Books bookObject){
@@ -78,7 +78,7 @@ public class bookController {
         return bookServices.createBook(bookObject);
     }
 //
-//    // Update a Genre
+//    // Update a Book
 //    // POST to http://localhost:9092/api/genres/genre_id
 //    @PutMapping(path = "/genres/{genreID}")
 //    public Genres updateGenre(@PathVariable(value = "genreID") Long genreID, @RequestBody Genres genreObject){
@@ -86,7 +86,7 @@ public class bookController {
 //        return bookServices.updateGenre(genreID, genreObject);
 //    }
 //
-    // Delete a Genre
+    // Delete a Book
     // DELETE to http://localhost:9092/api/books/{book_id}
     @DeleteMapping(path = "/books/{bookID}")
     public Books deleteBook(@PathVariable(value = "bookID") Long bookID){

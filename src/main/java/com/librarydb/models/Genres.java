@@ -3,7 +3,9 @@ package com.librarydb.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name ="genres")
@@ -16,18 +18,10 @@ public class Genres {
     @Column(name="genre_name")
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL, mappedBy = "genres")//, mappedBy = "books")
-    @JsonIgnore
-    private List<Books> books;
-
-
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "genres")
+    private Set<Books> books;
 
     public Genres() {
-    }
-
-    public Genres(Long id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public Long getId() {
@@ -46,11 +40,21 @@ public class Genres {
         this.name = name;
     }
 
-    public List<Books> getBooks() {
+    public Set<Books> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Books> books) {
-        this.books = books;
+    public void setBooks(Set<Books> book) {
+        this.books = book;
+    }
+
+    public void addBook(Books book) {
+        this.books.add(book);
+        book.getGenres().add(this);
+    }
+
+    public void removeBook(Books book) {
+        this.books.remove(book);
+        book.getGenres().remove(this);
     }
 }

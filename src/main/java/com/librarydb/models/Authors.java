@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.awt.print.Book;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,9 +20,8 @@ public class Authors {
     @Column(name="author_name")
     private String name;
 
-    @ManyToMany (cascade = CascadeType.ALL, mappedBy = "authors")
-    @JsonIgnore
-    private List<Books> books;
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "authors")
+    private Set<Books> books;
 
     @ManyToOne
     @JoinColumn(name="publishers")
@@ -47,11 +47,21 @@ public class Authors {
         this.name = name;
     }
 
-    public List<Books> getBooks() {
+    public Set<Books> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Books> books) {
-        this.books = books;
+    public void setBooks(Set<Books> book) {
+        this.books = book;
+    }
+
+    public void addBook(Books book) {
+        this.books.add(book);
+        book.getAuthors().add(this);
+    }
+
+    public void removeBook(Books book) {
+        this.books.remove(book);
+        book.getAuthors().remove(this);
     }
 }
