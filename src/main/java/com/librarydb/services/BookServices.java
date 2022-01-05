@@ -134,7 +134,7 @@ public class BookServices {
         }
     }
 
-        // TODO COPY FOR PUB GENRE
+
     public Authors putBookAuthor(int authorID, HashMap<String, ArrayList<Integer>> books) {
         LOGGER.info("calling updateBookAuthor method ==>");
         ArrayList<Integer> bookIds = books.get("books");
@@ -145,6 +145,30 @@ public class BookServices {
             currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
         }
         return authorRepository.save(currentAuthor);
+    }
+
+    public Genres putBookGenres(int genreID, HashMap<String, ArrayList<Integer>> books) {
+        LOGGER.info("calling updateBookGenre method ==>");
+        ArrayList<Integer> bookIds = books.get("books");
+        Genres currentGenre = genreRepository.findById((long) genreID).get();
+        for (int bookId : bookIds) {
+            if (!bookRepository.existsById((long) bookId))
+                throw new InfoNotFoundException("Book not found");
+            currentGenre.setBooks(bookRepository.findById((long) bookId).get());
+        }
+        return genreRepository.save(currentGenre);
+    }
+
+    public Publishers putBookPublishers(int publisherID, HashMap<String, ArrayList<Integer>> books) {
+        LOGGER.info("calling updateBookPublisher method ==>");
+        ArrayList<Integer> bookIds = books.get("books");
+        Publishers currentPublisher = publisherRepository.findById((long) publisherID).get();
+        for (int bookId : bookIds) {
+            if (!bookRepository.existsById((long) bookId))
+                throw new InfoNotFoundException("Book not found");
+            currentPublisher.setBooks(bookRepository.findById((long) bookId).get());
+        }
+        return publisherRepository.save(currentPublisher);
     }
 
     // DELETE a book api/books/{bookID}
