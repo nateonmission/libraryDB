@@ -1,5 +1,6 @@
 package com.librarydb.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.librarydb.models.Genres;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
@@ -11,14 +12,14 @@ import java.util.Set;
 import java.util.concurrent.Flow;
 
 @Entity
-@Table(name ="books")
+@Table(name = "books")
 public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="book_id")
+    @Column(name = "book_id")
     private Long id;
 
-    @Column(name="book_title")
+    @Column(name = "book_title")
     private String title;
 
     @Column
@@ -41,16 +42,21 @@ public class Books {
     @JoinColumn(name = "publisher_id")
     private Publishers publisher;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name="books_authors",
-            joinColumns=@JoinColumn(name="book_id"),
-            inverseJoinColumns=@JoinColumn(name="author_id"))
+//    @JsonIgnoreProperties("books_authors")
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(name="books_authors",
+//            joinColumns=@JoinColumn(name="book_id"),
+//            inverseJoinColumns=@JoinColumn(name="author_id"))
+//    private Set<Authors> authors;
+
+    @JsonIgnoreProperties("books")
+    @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Authors> authors;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name="books_genres",
-            joinColumns=@JoinColumn(name="book_id"),
-            inverseJoinColumns=@JoinColumn(name="genre_id"))
+    @JoinTable(name = "books_genres",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private Set<Genres> genres;
 
     public Books() {
