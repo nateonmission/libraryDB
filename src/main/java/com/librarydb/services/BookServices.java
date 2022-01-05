@@ -3,10 +3,7 @@ package com.librarydb.services;
 import com.librarydb.controllers.bookController;
 import com.librarydb.exceptions.InfoExistsException;
 import com.librarydb.exceptions.InfoNotFoundException;
-import com.librarydb.models.Authors;
-import com.librarydb.models.Books;
-import com.librarydb.models.Genres;
-import com.librarydb.models.Publishers;
+import com.librarydb.models.*;
 import com.librarydb.repositories.AuthorRepository;
 import com.librarydb.repositories.BookRepository;
 import com.librarydb.repositories.GenreRepository;
@@ -88,7 +85,7 @@ public class BookServices {
     // GET a publisher's books
     public List<Books> getPublisherBooks(Long publishersId) {
         LOGGER.info("service calling getPublisherBooks ==>");
-        List<Books> books = bookRepository.findByPublishersId(publishersId);
+        List<Books> books = bookRepository.findBooksByPublisherId(publishersId);
         if(books.isEmpty()) {
             throw new InfoNotFoundException("Cannot retrieve books for publisher with id "
                     + publishersId + "that does not exist");
@@ -116,7 +113,7 @@ public class BookServices {
         if (book != null) {
             throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
         } else {
-            System.out.println(bookObject.getPublisher());
+            // System.out.println(bookRequestObject.getPublisher());
             return bookRepository.save(bookObject);
         }
     }
