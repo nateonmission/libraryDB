@@ -64,7 +64,7 @@ Here is the diagram we built of our models.
 ### Timeline
 Day 1: Preparation/planning, setup Spring Boot files; Create book, author, genre, and publisher models <br>
 Day 2: Create book, author, genre, and publisher repositories; Create exceptions; Create book service and book controller <br>
-Day 3: Bonus items <br>
+Day 3: Debug Endpoints; Bonus items <br>
 Day 4: Bonus items <br>
 Day 5: Bonus items <br>
 Day 6: Polishing up and presentation
