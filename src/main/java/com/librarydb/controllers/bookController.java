@@ -24,7 +24,7 @@ public class bookController {
     // JavaBeans POJO - One Instance for whole class
     private BookServices bookServices;
     @Autowired
-    public void setBookService(BookServices bookServices){
+    public void setBookService(BookServices bookServices) {
         this.bookServices = bookServices;
     }
 
@@ -37,21 +37,18 @@ public class bookController {
     private AuthorRepository authorRepository;
     @Autowired
     public void setAuthorRepository(AuthorRepository authorRepository) {
-
         this.authorRepository = authorRepository;
     }
 
     private GenreRepository genreRepository;
     @Autowired
     public void setGenreRepository(GenreRepository genreRepository) {
-
         this.genreRepository = genreRepository;
     }
 
     private PublisherRepository publisherRepository;
     @Autowired
     public void setPublisherRepository(PublisherRepository publisherRepository) {
-
         this.publisherRepository = publisherRepository;
     }
 
@@ -62,8 +59,7 @@ public class bookController {
     }
 
     // BOOKS
-    //  GET all Books
-    // http://localhost:9092/api/genres
+    // GET all Books
     @GetMapping("/books")
     public List<Books> getBooks(){
         LOGGER.info("calling getBooks method from controller");
@@ -78,29 +74,41 @@ public class bookController {
     }
 
     // GET an author's books
+    @GetMapping(path = "/authors/{author_ID}/books")
+    public List<Books> getAuthorBooks(@PathVariable Long authorsId) {
+        LOGGER.info("controller calling getAuthorBooks ==>");
+        return bookServices.getAuthorBooks(authorsId);
+    }
 
     // GET a publisher's books
+    @GetMapping(path = "/publishers/{publisher_ID}/books")
+    public List<Books> getPublisherBooks(@PathVariable Long publishersId) {
+        LOGGER.info("controller calling getPublisherBooks ==>");
+        return bookServices.getPublisherBooks(publishersId);
+    }
 
     // GET a genre's books
+    @GetMapping(path = "/genres/{genre_ID}/books")
+    public List<Books> getGenreBooks(@PathVariable Long genresId) {
+        LOGGER.info("controller calling getGenreBooks ==>");
+        return bookServices.getGenreBooks(genresId);
+    }
 
-    // Create a Book = POST	api/BOOKS
-    // http://localhost:9092/api/books
+    // POST Create a Book
     @PostMapping(path = "/books")
     public Books createBook(@RequestBody Books bookObject){
         LOGGER.info("calling createBook method from controller");
         return bookServices.createBook(bookObject);
     }
-//
-//    // Update a Book
-//    // POST to http://localhost:9092/api/genres/genre_id
-//    @PutMapping(path = "/genres/{genreID}")
-//    public Genres updateGenre(@PathVariable(value = "genreID") Long genreID, @RequestBody Genres genreObject){
-//        LOGGER.info("calling updateGenre method from controller");
-//        return bookServices.updateGenre(genreID, genreObject);
-//    }
-//
+
+    // PUT Update a Book
+    @PutMapping(path = "/books/{book_ID}")
+    public Books updateBook(Long bookId, Books bookObject){
+        LOGGER.info("calling uypdateBook method from controller");
+        return bookServices.updateBook(bookId, bookObject);
+    }
+
     // Delete a Book
-    // DELETE to http://localhost:9092/api/books/{book_id}
     @DeleteMapping(path = "/books/{bookID}")
     public Books deleteBook(@PathVariable(value = "bookID") Long bookID){
         LOGGER.info("calling deleteBook method from controller");
@@ -156,39 +164,35 @@ public class bookController {
         return bookServices.deleteAuthor(authorId);
     }
 
-    //  List All Genres
-    // http://localhost:9092/api/genres
+    // GET All Genres
     @GetMapping("/genres")
     public List<Genres> getGenres(){
         LOGGER.info("calling getGenres method from controller");
         return bookServices.getGenres();
     }
 
-    // Create a Genre = POST	api/genres
-    // http://localhost:9092/api/genres
+    // POST Create a single Genre
     @PostMapping(path = "/genres")
     public Genres createGenre(@RequestBody Genres genreObject){
         LOGGER.info("calling createGenre method from controller");
         return bookServices.createGenre(genreObject);
     }
 
-    // Get a single Genre
+    // GET a single Genre
     @GetMapping(path = "/genres/{genre_ID}")
     public Optional getGenre(@PathVariable Long genreId) {
         LOGGER.info("controller calling getGenre ==>");
         return bookServices.getGenre(genreId);
     }
 
-    // Update a Genre
-    // POST to http://localhost:9092/api/genres/genre_id
+    // PUT Update a Genre
     @PutMapping(path = "/genres/{genreID}")
     public Genres updateGenre(@PathVariable(value = "genreID") Long genreID, @RequestBody Genres genreObject){
         LOGGER.info("calling updateGenre method from controller");
         return bookServices.updateGenre(genreID, genreObject);
     }
 
-    // Delete a Genre
-    // DELETE to http://localhost:9092/api/categories/genre_id
+    // DEL delete a Genre
     @DeleteMapping(path = "/genres/{genreID}")
     public Genres deleteCategory(@PathVariable(value = "genreID") Long genreID){
         LOGGER.info("calling deleteCategory method from controller");
@@ -196,39 +200,35 @@ public class bookController {
     }
 
     // PUBLISHERS
-    //  List All Publishers
-    // http://localhost:9092/api/publishers
+    // GET List All Publishers
     @GetMapping("/publishers")
     public List<Publishers> getPublishers(){
         LOGGER.info("calling getPublishers method from controller");
         return bookServices.getPublishers();
     }
 
-    // Create Publisher = POST	api/publishers
-    // http://localhost:9092/api/publishers
+    // POST Create Publisher
     @PostMapping(path = "/publishers")
     public Publishers createPublisher(@RequestBody Publishers pubObject){
         LOGGER.info("calling createPublisher method from controller");
         return bookServices.createPublisher(pubObject);
     }
 
-    // Get a single Publisher
+    // GET a single Publisher
     @GetMapping(path = "/publishers/{publisher_ID}")
     public Optional getPublisher(@PathVariable Long publisherId) {
         LOGGER.info("controller calling getPublisher ==>");
         return bookServices.getPublisher(publisherId);
     }
 
-    // Update Publisher
-    // POST to http://localhost:9092/api/publishers/pub_id
+    // PUT Update Publisher
     @PutMapping(path = "/publishers/{pubID}")
     public Publishers updatePublisher(@PathVariable(value = "pubID") Long pubID, @RequestBody Publishers pubObject){
         LOGGER.info("calling updatePublisher method from controller");
         return bookServices.updatePublisher(pubID, pubObject);
     }
 
-    // Delete Publisher
-    // DELETE to http://localhost:9092/api/publishers/pub_id
+    // DEL delete Publisher
     @DeleteMapping(path = "/publishers/{pubID}")
     public Publishers deletePublisher(@PathVariable(value = "pubID") Long pubID){
         LOGGER.info("calling deletePublisher method from controller");
