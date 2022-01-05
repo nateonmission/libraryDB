@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.logging.Logger;
 
 @RestController
@@ -120,14 +119,14 @@ public class bookController {
 
     // GET a book's authors
     @GetMapping(path = "/books/{book_ID}/authors")
-    public Set<Authors> getBookAuthors(@PathVariable Long booksId) {
+    public List<Authors> getBookAuthors(@PathVariable Long booksId) {
         LOGGER.info("controller calling getBookAuthors ==>");
         return bookServices.getBookAuthors(booksId);
     }
 
     // GET a publisher's authors
     @GetMapping(path = "/publishers/{publisher_ID}/authors")
-    public Set<Authors> getPublisherAuthors(@PathVariable Long publishersId) {
+    public List<Authors> getPublisherAuthors(@PathVariable Long publishersId) {
         LOGGER.info("controller calling getPublisherAuthors ==>");
         return bookServices.getPublisherAuthors(publishersId);
     }

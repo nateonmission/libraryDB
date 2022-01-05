@@ -1,13 +1,10 @@
 package com.librarydb.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.awt.print.Book;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -23,9 +20,9 @@ public class Publishers {
     @Column(name="publisher_name")
     private String name;
 
-    @OneToMany (mappedBy = "publisher")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<Books> books = new HashSet<>();
+    @OneToMany (cascade = CascadeType.ALL, mappedBy = "publisher")
+    @JsonIgnore
+    private List<Books> books = new ArrayList<>();
 
     public Publishers() {
     }
@@ -46,11 +43,11 @@ public class Publishers {
         this.name = name;
     }
 
-    public Set<Books> getBooks() {
+    public List<Books> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<Books> books) {
+    public void setBooks(List<Books> books) {
         this.books = books;
     }
 }

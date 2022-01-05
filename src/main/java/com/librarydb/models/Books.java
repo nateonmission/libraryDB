@@ -6,8 +6,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Flow;
@@ -38,10 +36,9 @@ public class Books {
     @Column
     private boolean isAvailable;
 
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "publisher_id")
-    @JsonIgnore
     private Publishers publisher;
 
     @JsonIgnore
@@ -49,20 +46,20 @@ public class Books {
     @JoinTable(name="books_authors",
             joinColumns=@JoinColumn(name="book_id"),
             inverseJoinColumns=@JoinColumn(name="author_id"))
-    private Set<Authors> authors = new HashSet<>();
+    private List<Authors> authors;
 
     @JsonIgnore
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="books_genres",
             joinColumns=@JoinColumn(name="book_id"),
             inverseJoinColumns=@JoinColumn(name="genre_id"))
-    private Set<Genres> genres = new HashSet<>();
+    private List<Genres> genres;
 
 
     public Books() {
     }
 
-    public Books(String title, Set<Genres> genres, Publishers publisher, Set<Authors> authors) {
+    public Books(String title, List<Genres> genres, Publishers publisher, List<Authors> authors) {
         this.title = title;
         this.genres = genres;
         this.publisher = publisher;
@@ -125,11 +122,11 @@ public class Books {
         isAvailable = available;
     }
 
-    public Set<Genres> getGenres() {
+    public List<Genres> getGenres() {
         return genres;
     }
 
-    public void setGenre(Set<Genres> genres) {
+    public void setGenre(List<Genres> genres) {
         this.genres = genres;
     }
 
@@ -141,11 +138,11 @@ public class Books {
         this.publisher = publisher;
     }
 
-    public Set<Authors> getAuthors() {
+    public List<Authors> getAuthors() {
         return authors;
     }
 
-    public void setAuthor(Set<Authors> authors) {
+    public void setAuthor(List<Authors> authors) {
         this.authors = authors;
     }
 }
