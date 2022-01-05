@@ -19,17 +19,11 @@ public class Authors {
     @Column(name="author_name")
     private String name;
 
-//    @JsonIgnoreProperties("authors")
-//    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "authors")
-//    private Set<Books> books;
-
     @JsonIgnoreProperties("authors")
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "author_book", joinColumns = {@JoinColumn(name = "author_id")}, inverseJoinColumns =
-        @JoinColumn(name = "book_id")
-    )
+    @JoinTable(name = "author_book", joinColumns = {@JoinColumn(name = "author_id")},
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Books> books;
-
 
     @ManyToOne
     @JoinColumn(name="publishers")
