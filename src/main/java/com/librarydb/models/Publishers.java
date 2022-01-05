@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Publishers {
 
     @OneToMany (cascade = CascadeType.ALL, mappedBy = "publisher")
     @JsonIgnore
-    private List<Books> books;
+    private List<Books> books = new ArrayList<>();
 
     public Publishers() {
     }
