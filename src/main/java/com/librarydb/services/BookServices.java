@@ -51,17 +51,33 @@ public class BookServices {
     }
 
     //BOOKS
-    // GET api/books
-//    public List<Genres> getGenres() {
-//        LOGGER.info("service calling getGenres ==>");
-//
-//        List<Genres> genres = genreRepository.findAll();
-//        if (genres.isEmpty()) {
-//            throw new InfoNotFoundException("no categories found");
-//        } else {
-//            return genres;
-//        }
-//    }
+    // GET all books api/books
+    public List<Books> getBooks() {
+        LOGGER.info("service calling getBooks ==>");
+        List<Books> books = bookRepository.findAll();
+        if (books.isEmpty()) {
+            throw new InfoNotFoundException("no books found");
+        } else {
+            return books;
+        }
+    }
+
+    // GET a single book
+    public Optional getBook(Long bookId) {
+        LOGGER.info("service calling getBook ==>");
+        Optional book = bookRepository.findById(bookId);
+        if (book.isPresent()) {
+            return book;
+        } else {
+            throw new InfoNotFoundException("Book with id " + bookId + "not found");
+        }
+    }
+
+    // GET an author's books
+
+    // GET a publisher's books
+
+    // GET a genre's books
 
     // POST api/books
     public Books createBook(Books bookObject) {
@@ -100,13 +116,16 @@ public class BookServices {
         }
     }
 
-
-
     // AUTHORS
     // GET api/authors
     public List<Authors> getAuthors() {
         LOGGER.info("service calling getAuthors ==>");
-        return authorRepository.findAll();
+        List<Authors> authors = authorRepository.findAll();
+        if (authors.isEmpty()) {
+            throw new InfoNotFoundException("no authors found");
+        } else {
+            return authors;
+        }
     }
 
     // POST api/authors
