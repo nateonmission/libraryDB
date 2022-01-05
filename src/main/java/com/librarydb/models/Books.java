@@ -6,6 +6,8 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Flow;
@@ -41,29 +43,19 @@ public class Books {
     @JoinColumn(name = "publisher_id")
     private Publishers publisher;
 
-    @JsonIgnore
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name="books_authors",
             joinColumns=@JoinColumn(name="book_id"),
             inverseJoinColumns=@JoinColumn(name="author_id"))
-    private List<Authors> authors;
+    private Set<Authors> authors;
 
-    @JsonIgnore
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name="books_genres",
             joinColumns=@JoinColumn(name="book_id"),
             inverseJoinColumns=@JoinColumn(name="genre_id"))
-    private List<Genres> genres;
-
+    private Set<Genres> genres;
 
     public Books() {
-    }
-
-    public Books(String title, List<Genres> genres, Publishers publisher, List<Authors> authors) {
-        this.title = title;
-        this.genres = genres;
-        this.publisher = publisher;
-        this.authors = authors;
     }
 
     public Long getId() {
@@ -122,12 +114,22 @@ public class Books {
         isAvailable = available;
     }
 
-    public List<Genres> getGenres() {
+    public Set<Genres> getGenres() {
         return genres;
     }
 
-    public void setGenre(List<Genres> genres) {
+    public void setGenre(Set<Genres> genres) {
         this.genres = genres;
+    }
+
+    public void addGenre(Genres genre) {
+        this.genres.add(genre);
+        genre.getBooks().add(this);
+    }
+
+    public void removeGenre(Genres genre) {
+        this.genres.remove(genre);
+        genre.getBooks().remove(this);
     }
 
     public Publishers getPublisher() {
@@ -138,11 +140,21 @@ public class Books {
         this.publisher = publisher;
     }
 
-    public List<Authors> getAuthors() {
+    public Set<Authors> getAuthors() {
         return authors;
     }
 
-    public void setAuthor(List<Authors> authors) {
-        this.authors = authors;
+    public void setAuthor(Set<Authors> author) {
+        this.authors = author;
+    }
+
+    public void addAuthor(Authors author) {
+        this.authors.add(author);
+        author.getBooks().add(this);
+    }
+
+    public void removeAuthor(Authors author) {
+        this.authors.remove(author);
+        author.getBooks().remove(this);
     }
 }

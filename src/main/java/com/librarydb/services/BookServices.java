@@ -51,7 +51,7 @@ public class BookServices {
     }
 
     //BOOKS
-    // GET api/genres
+    // GET api/books
 //    public List<Genres> getGenres() {
 //        LOGGER.info("service calling getGenres ==>");
 //
@@ -63,10 +63,9 @@ public class BookServices {
 //        }
 //    }
 
-    // POST api/genres
+    // POST api/books
     public Books createBook(Books bookObject) {
         LOGGER.info("service calling createBook ==>");
-
         Books book = bookRepository.findByTitle(bookObject.getTitle());
         if (book != null) {
             throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
@@ -76,7 +75,7 @@ public class BookServices {
         }
     }
 
-//    // PUT api/genres/{genre_ID}
+//    // PUT api/books/{book_ID}
 //    public Genres updateGenre( Long genreID, Genres genreObject) {
 //        LOGGER.info("calling updateGenre method ==> ");
 //
@@ -90,9 +89,8 @@ public class BookServices {
 //    }
 //
     // DELETE api/books/{bookID}
-    public Books deleteBook( Long bookID) {
+    public Books deleteBook(Long bookID) {
         LOGGER.info("calling deleteBook method ==>");
-
         Optional<Books> book = bookRepository.findById(bookID);
         if (book != null) {
             bookRepository.deleteById(bookID);
