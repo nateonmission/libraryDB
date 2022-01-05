@@ -11,10 +11,10 @@ efficiently keep track of their books!
 
 | Method |Endpoints                           | Description                    | Done |
 |--------|------------------------------------|--------------------------------|------|
-| GET    |api/books                           | returns JSON of all books      ||
-| POST   |api/books                           | reates new book                ||
-| GET    |api/books/{bookID}                  | returns JSON for book          ||
-| PUT    |api/books/{bookID}                  | updates specific book          ||
+| GET    |api/books                           | returns all books              | X    |
+| POST   |api/books                           | creates new book               ||
+| GET    |api/books/{bookID}                  | returns a book                 | X    |
+| PUT    |api/books/{bookID}                  | updates specific book          | X    |
 | DELETE |api/books/{bookID}                  | deletes specific book          | X    |
 |        |                                    |                                ||
 | GET    |api/authors                         | returns all authors            | X    |
