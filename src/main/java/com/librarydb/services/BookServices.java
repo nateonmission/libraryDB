@@ -74,12 +74,42 @@ public class BookServices {
     }
 
     // GET an author's books
+    public List<Books> getAuthorBooks(Long authorsId) {
+        LOGGER.info("service calling getAuthorBooks ==>");
+        List<Books> books = bookRepository.findByAuthorsId(authorsId);
+        if(books.isEmpty()) {
+            throw new InfoNotFoundException("Cannot retrieve books for an author with id "
+                    + authorsId + "that does not exist");
+        } else {
+            return books;
+        }
+    }
 
     // GET a publisher's books
+    public List<Books> getPublisherBooks(Long publishersId) {
+        LOGGER.info("service calling getPublisherBooks ==>");
+        List<Books> books = bookRepository.findByPublishersId(publishersId);
+        if(books.isEmpty()) {
+            throw new InfoNotFoundException("Cannot retrieve books for publisher with id "
+                    + publishersId + "that does not exist");
+        } else {
+            return books;
+        }
+    }
 
     // GET a genre's books
+    public List<Books> getGenreBooks(Long genresId) {
+        LOGGER.info("service calling getGenreBooks ==>");
+        List<Books> books = bookRepository.findByGenresId(genresId);
+        if(books.isEmpty()) {
+            throw new InfoNotFoundException("Cannot retrieve books for genre with id "
+                    + genresId + "that does not exist");
+        } else {
+            return books;
+        }
+    }
 
-    // POST api/books
+    // POST create a book api/books
     public Books createBook(Books bookObject) {
         LOGGER.info("service calling createBook ==>");
         Books book = bookRepository.findByTitle(bookObject.getTitle());
@@ -91,35 +121,32 @@ public class BookServices {
         }
     }
 
-
-    // PUT api/books/{book_ID}
-    public Books updateBook( Long bookID, Genres bookObject) {
-        LOGGER.info("calling updateBook method ==> ");
-
+    // PUT update a book api/books/{book_ID}
+    public Books updateBook( Long bookID, Books bookObject) {
+        LOGGER.info("service calling updateBook method ==> ");
         Optional<Books> book = bookRepository.findById(bookID);
         if (book == null) {
             throw new InfoNotFoundException("book with id " + bookID + " not found");
         } else {
-            book.get().setTitle(bookObject.getName());
+            book.get().setTitle(bookObject.getTitle());
             return bookRepository.save(book.get());
         }
     }
 
-
-    // DELETE api/books/{bookID}
+    // DELETE a book api/books/{bookID}
     public Books deleteBook(Long bookID) {
-        LOGGER.info("calling deleteBook method ==>");
+        LOGGER.info("service calling deleteBook method ==>");
         Optional<Books> book = bookRepository.findById(bookID);
         if (book != null) {
             bookRepository.deleteById(bookID);
             return book.get();
         } else {
-            throw new InfoNotFoundException("category with id: " + bookID + " does NOT exists");
+            throw new InfoNotFoundException("book with id: " + bookID + " does NOT exist");
         }
     }
 
     // AUTHORS
-    // GET api/authors
+    // GET all authors api/authors
     public List<Authors> getAuthors() {
         LOGGER.info("service calling getAuthors ==>");
         List<Authors> authors = authorRepository.findAll();
@@ -130,7 +157,7 @@ public class BookServices {
         }
     }
 
-    // POST api/authors
+    // POST create an author api/authors
     public Authors createAuthor(Authors authorObject) {
         LOGGER.info("service calling createAuthor ==>");
         Authors author = authorRepository.findByName(authorObject.getName());
@@ -153,7 +180,7 @@ public class BookServices {
         }
     }
 
-    // GET api/books/{book_ID}/authors
+    // GET a book's authors api/books/{book_ID}/authors
     public List<Authors> getBookAuthors(Long booksId) {
         LOGGER.info("service calling getBookAuthors ==>");
         List<Authors> authors = authorRepository.findByBooksId(booksId);
@@ -165,7 +192,7 @@ public class BookServices {
         }
     }
 
-    // GET api/publishers/{publisher_ID}/authors
+    // GET a publisher's authors api/publishers/{publisher_ID}/authors
     public List<Authors> getPublisherAuthors(Long publishersId) {
         LOGGER.info("service calling getPublisherAuthors ==>");
         List<Authors> authors = authorRepository.findByPublishersId(publishersId);
@@ -177,22 +204,20 @@ public class BookServices {
         }
     }
 
-    // PUT api/authors/{author_ID}
+    // PUT update an author api/authors/{author_ID}
     public Authors updateAuthor(Long authorId, Authors authorObject) {
         LOGGER.info("service calling updateAuthor ==>");
         Optional<Authors> author = authorRepository.findById(authorId);
         if (author.isPresent()) {
-
                 Authors updateAuthor = authorRepository.findById(authorId).get();
                 updateAuthor.setName(authorObject.getName());
                 return authorRepository.save(updateAuthor);
-
         } else {
             throw new InfoNotFoundException("author with id " + authorId + " not found");
         }
     }
 
-    // DEL api/authors/{author_ID}
+    // DEL delete an author api/authors/{author_ID}
     public Optional<Authors> deleteAuthor(Long authorId) {
         LOGGER.info("service calling updateAuthor ==>");
         Optional<Authors> author = authorRepository.findById(authorId);
@@ -204,10 +229,9 @@ public class BookServices {
         }
     }
 
-    // GET api/genres
+    // GET all genres api/genres
     public List<Genres> getGenres() {
         LOGGER.info("service calling getGenres ==>");
-
         List<Genres> genres = genreRepository.findAll();
         if (genres.isEmpty()) {
             throw new InfoNotFoundException("no categories found");
@@ -216,10 +240,9 @@ public class BookServices {
         }
     }
 
-    // POST api/genres
+    // POST create a genre api/genres
     public Genres createGenre(Genres genreObject) {
         LOGGER.info("service calling createGenre ==>");
-
         Genres genre = genreRepository.findByName(genreObject.getName());
         if (genre != null) {
             throw new InfoExistsException("category with name " + genre.getName() + " already exists");
@@ -228,7 +251,7 @@ public class BookServices {
         }
     }
 
-    // GET api/genre/{genre_ID}
+    // GET a single genre api/genre/{genre_ID}
     public Optional getGenre(Long genreId) {
         LOGGER.info("service calling getGenre ==>");
         Optional genre = genreRepository.findById(genreId);
@@ -239,10 +262,9 @@ public class BookServices {
         }
     }
 
-    // PUT api/genres/{genre_ID}
+    // PUT update a genre api/genres/{genre_ID}
     public Genres updateGenre( Long genreID, Genres genreObject) {
-        LOGGER.info("calling updateGenre method ==> ");
-
+        LOGGER.info("service calling updateGenre method ==> ");
         Optional<Genres> genre = genreRepository.findById(genreID);
         if (genre == null) {
             throw new InfoNotFoundException("category with id " + genreID + " not found");
@@ -252,10 +274,9 @@ public class BookServices {
         }
     }
 
-    // DELETE api/genres/{genreID}
+    // DELETE a genre api/genres/{genreID}
     public Genres deleteGenre( Long genreID) {
-        LOGGER.info("calling deleteCategory method ==>");
-
+        LOGGER.info("service calling deleteCategory method ==>");
         Optional<Genres> genre = genreRepository.findById(genreID);
         if (genre != null) {
             genreRepository.deleteById(genreID);
@@ -266,10 +287,9 @@ public class BookServices {
     }
 
     // PUBLISHERS
-    // GET api/genres
+    // GET all publishers api/publishers
     public List<Publishers> getPublishers() {
         LOGGER.info("service calling getPublishers ==>");
-
         List<Publishers> publishers = publisherRepository.findAll();
         if (publishers.isEmpty()) {
             throw new InfoNotFoundException("no publishers found");
@@ -278,10 +298,9 @@ public class BookServices {
         }
     }
 
-    // POST api/genres
+    // POST create a publisher api/publishers
     public Publishers createPublisher(Publishers publisherObject) {
         LOGGER.info("service calling createPublisher ==>");
-
         Publishers pub = publisherRepository.findByName(publisherObject.getName());
         if (pub != null) {
             throw new InfoExistsException("publisher with name " + pub.getName() + " already exists");
@@ -290,7 +309,7 @@ public class BookServices {
         }
     }
 
-    // GET api/publisher/{publisher_ID}
+    // GET a single publisher api/publisher/{publisher_ID}
     public Optional getPublisher(Long publisherId) {
         LOGGER.info("service calling getPublisher ==>");
         Optional publisher = publisherRepository.findById(publisherId);
@@ -301,10 +320,9 @@ public class BookServices {
         }
     }
 
-    // PUT api/publishers/{pub_ID}
+    // PUT update a publisher api/publishers/{pub_ID}
     public Publishers updatePublisher( Long pubID, Publishers publisherObject) {
-        LOGGER.info("calling updatePublisher method ==> ");
-
+        LOGGER.info("service calling updatePublisher method ==> ");
         Optional<Publishers> pub = publisherRepository.findById(pubID);
         if (pub == null) {
             throw new InfoNotFoundException("publisher with id " + pubID + " not found");
@@ -314,10 +332,9 @@ public class BookServices {
         }
     }
 
-    // DELETE api/publishers/{pubID}
+    // DELETE a publisher api/publishers/{pubID}
     public Publishers deletePublisher( Long pubID) {
-        LOGGER.info("calling deletePublisher method ==>");
-
+        LOGGER.info("service calling deletePublisher method ==>");
         Optional<Publishers> pub = publisherRepository.findById(pubID);
         if (pub != null) {
             publisherRepository.deleteById(pubID);
@@ -326,6 +343,5 @@ public class BookServices {
             throw new InfoNotFoundException("publisher with id: " + pubID + " does NOT exists");
         }
     }
-
 
 }
