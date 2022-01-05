@@ -62,13 +62,26 @@ public class bookController {
     }
 
     // BOOKS
-//    //  List All Books
-//    // http://localhost:9092/api/genres
-//    @GetMapping("/books")
-//    public List<Genres> getGenres(){
-//        LOGGER.info("calling getGenres method from controller");
-//        return bookServices.getGenres();
-//    }
+    //  GET all Books
+    // http://localhost:9092/api/genres
+    @GetMapping("/books")
+    public List<Books> getBooks(){
+        LOGGER.info("calling getBooks method from controller");
+        return bookServices.getBooks();
+    }
+
+    // GET a single Book
+    @GetMapping(path = "/books/{book_ID}")
+    public Optional getBook(@PathVariable Long bookId) {
+        LOGGER.info("controller calling getBook ==>");
+        return bookServices.getBook(bookId);
+    }
+
+    // GET an author's books
+
+    // GET a publisher's books
+
+    // GET a genre's books
 
     // Create a Book = POST	api/BOOKS
     // http://localhost:9092/api/books
@@ -93,8 +106,6 @@ public class bookController {
         LOGGER.info("calling deleteBook method from controller");
         return bookServices.deleteBook(bookID);
     }
-
-
 
     // GET all authors
     @GetMapping(path = "/authors")
