@@ -3,7 +3,9 @@ package com.librarydb.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name ="genres")
@@ -17,8 +19,7 @@ public class Genres {
     private String name;
 
     @ManyToMany (cascade = CascadeType.ALL, mappedBy = "genres")//, mappedBy = "books")
-    @JsonIgnore
-    private List<Books> books;
+    private Set<Books> books = new HashSet<Books>();
 
 
 
@@ -46,11 +47,11 @@ public class Genres {
         this.name = name;
     }
 
-    public List<Books> getBooks() {
+    public Set<Books> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Books> books) {
+    public void setBooks(Set<Books> books) {
         this.books = books;
     }
 }

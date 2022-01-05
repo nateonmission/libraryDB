@@ -4,9 +4,12 @@ import com.librarydb.models.Books;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Set;
 
 public interface BookRepository extends JpaRepository<Books, Long> {
-    Books findById(String booksTitle);
+    Books findBookById(Long booksId);
     Books findByTitle(String booksTitle);
-    List<Books> findByAuthorsId(Long authorsId);
+    Set<Books> findByAuthors(Long authorsId);
+    Set<Books> findByPublisher(Long publishersId);
+    Set<Books> findByGenres(Long genresId);
 }

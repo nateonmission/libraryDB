@@ -20,12 +20,10 @@ public class Authors {
     private String name;
 
     @ManyToMany (cascade = CascadeType.ALL, mappedBy = "authors")
-    @JsonIgnore
     private List<Books> books;
 
     @ManyToOne
     @JoinColumn(name="publishers")
-    @JsonIgnore
     private Publishers publishers;
 
     public Authors() {

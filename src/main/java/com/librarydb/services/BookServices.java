@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @Service
@@ -66,7 +67,10 @@ public class BookServices {
     // POST api/genres
     public Books createBook(Books bookObject) {
         LOGGER.info("service calling createBook ==>");
-
+        System.out.println(bookObject.getTitle());
+        System.out.println(bookObject.getPublisher());
+        System.out.println(bookObject.getGenres());
+        System.out.println(bookObject.getAuthors());
         Books book = bookRepository.findByTitle(bookObject.getTitle());
         if (book != null) {
             throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
@@ -135,9 +139,9 @@ public class BookServices {
     }
 
     // GET api/books/{book_ID}/authors
-    public List<Authors> getBookAuthors(Long booksId) {
+    public Set<Authors> getBookAuthors(Long booksId) {
         LOGGER.info("service calling getBookAuthors ==>");
-        List<Authors> authors = authorRepository.findByBooksId(booksId);
+        Set<Authors> authors = authorRepository.findByBooksId(booksId);
         if(authors.isEmpty()) {
             throw new InfoNotFoundException("Cannot retrieve authors for book with id "
                     + booksId + "that does not exist");
@@ -147,9 +151,9 @@ public class BookServices {
     }
 
     // GET api/publishers/{publisher_ID}/authors
-    public List<Authors> getPublisherAuthors(Long publishersId) {
+    public Set<Authors> getPublisherAuthors(Long publishersId) {
         LOGGER.info("service calling getPublisherAuthors ==>");
-        List<Authors> authors = authorRepository.findByPublishersId(publishersId);
+        Set<Authors> authors = authorRepository.findByPublishersId(publishersId);
         if(authors.isEmpty()) {
             throw new InfoNotFoundException("Cannot retrieve authors for a publisher with id "
                     + publishersId + "that does not exist");
