@@ -113,21 +113,23 @@ public class bookController {
 
     @PutMapping(path = "/books/{bookID}")
     public Books updateBook(Long bookId, Books bookObject){
-        LOGGER.info("calling uypdateBook method from controller");
+        LOGGER.info("calling updateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
     }
 
     // Update book author
     @PutMapping(path = "/authors/books/{authorID}")
     public Authors putBookAuthor(@PathVariable(value = "authorID") int authorID, @RequestBody HashMap<String, ArrayList<Integer>> books) {
-        ArrayList<Integer> bookIds = books.get("books");
-        Authors currentAuthor = authorRepository.findById((long) authorID).get();
-        for (int bookId : bookIds) {
-            if (!bookRepository.existsById((long) bookId))
-                throw new InfoNotFoundException("Book not found");
-            currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
-        }
-        return authorRepository.save(currentAuthor);
+        LOGGER.info("calling updateBookAuthor method from controller");
+//        ArrayList<Integer> bookIds = books.get("books");
+//        Authors currentAuthor = authorRepository.findById((long) authorID).get();
+//        for (int bookId : bookIds) {
+//            if (!bookRepository.existsById((long) bookId))
+//                throw new InfoNotFoundException("Book not found");
+//            currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
+//        }
+//        return authorRepository.save(currentAuthor);
+        return bookServices.putBookAuthor(authorID, books);
     }
 
     // Delete a Book

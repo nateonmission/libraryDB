@@ -10,10 +10,10 @@ import com.librarydb.repositories.GenreRepository;
 import com.librarydb.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Service
@@ -132,6 +132,19 @@ public class BookServices {
             book.get().setTitle(bookObject.getTitle());
             return bookRepository.save(book.get());
         }
+    }
+
+        // TODO COPY FOR PUB GENRE
+    public Authors putBookAuthor(int authorID, HashMap<String, ArrayList<Integer>> books) {
+        LOGGER.info("calling updateBookAuthor method ==>");
+        ArrayList<Integer> bookIds = books.get("books");
+        Authors currentAuthor = authorRepository.findById((long) authorID).get();
+        for (int bookId : bookIds) {
+            if (!bookRepository.existsById((long) bookId))
+                throw new InfoNotFoundException("Book not found");
+            currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
+        }
+        return authorRepository.save(currentAuthor);
     }
 
     // DELETE a book api/books/{bookID}
