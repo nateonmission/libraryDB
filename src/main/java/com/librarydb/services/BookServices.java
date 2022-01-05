@@ -75,7 +75,7 @@ public class BookServices {
         }
     }
 
-<<<<<<< HEAD
+
     // PUT api/books/{book_ID}
     public Books updateBook( Long bookID, Genres bookObject) {
         LOGGER.info("calling updateBook method ==> ");
@@ -89,21 +89,7 @@ public class BookServices {
         }
     }
 
-=======
-//    // PUT api/books/{book_ID}
-//    public Genres updateGenre( Long genreID, Genres genreObject) {
-//        LOGGER.info("calling updateGenre method ==> ");
-//
-//        Optional<Genres> genre = genreRepository.findById(genreID);
-//        if (genre == null) {
-//            throw new InfoNotFoundException("category with id " + genreID + " not found");
-//        } else {
-//            genre.get().setName(genreObject.getName());
-//            return genreRepository.save(genre.get());
-//        }
-//    }
-//
->>>>>>> 26edc481c980ffaff24a28ce0573a97a2733f502
+
     // DELETE api/books/{bookID}
     public Books deleteBook(Long bookID) {
         LOGGER.info("calling deleteBook method ==>");
