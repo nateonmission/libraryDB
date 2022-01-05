@@ -70,6 +70,7 @@ public class BookServices {
         }
     }
 
+    // TODO
     // GET an author's books
     public List<Books> getAuthorBooks(Long authorsId) {
         LOGGER.info("service calling getAuthorBooks ==>");
@@ -82,6 +83,7 @@ public class BookServices {
         }
     }
 
+    // TODO
     // GET a publisher's books
     public List<Books> getPublisherBooks(Long publishersId) {
         LOGGER.info("service calling getPublisherBooks ==>");
@@ -94,6 +96,7 @@ public class BookServices {
         }
     }
 
+    // TODO
     // GET a genre's books
     public List<Books> getGenreBooks(Long genresId) {
         LOGGER.info("service calling getGenreBooks ==>");
