@@ -76,19 +76,19 @@ public class BookServices {
         }
     }
 
-//    // PUT api/genres/{genre_ID}
-//    public Genres updateGenre( Long genreID, Genres genreObject) {
-//        LOGGER.info("calling updateGenre method ==> ");
-//
-//        Optional<Genres> genre = genreRepository.findById(genreID);
-//        if (genre == null) {
-//            throw new InfoNotFoundException("category with id " + genreID + " not found");
-//        } else {
-//            genre.get().setName(genreObject.getName());
-//            return genreRepository.save(genre.get());
-//        }
-//    }
-//
+    // PUT api/books/{book_ID}
+    public Books updateBook( Long bookID, Genres bookObject) {
+        LOGGER.info("calling updateBook method ==> ");
+
+        Optional<Books> book = bookRepository.findById(bookID);
+        if (book == null) {
+            throw new InfoNotFoundException("book with id " + bookID + " not found");
+        } else {
+            book.get().setTitle(bookObject.getName());
+            return bookRepository.save(book.get());
+        }
+    }
+
     // DELETE api/books/{bookID}
     public Books deleteBook( Long bookID) {
         LOGGER.info("calling deleteBook method ==>");
