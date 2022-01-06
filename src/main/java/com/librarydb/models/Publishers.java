@@ -22,16 +22,19 @@ public class Publishers {
     @Column(name="publisher_name")
     private String name;
 
-//    @OneToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "publisher")
-//    @JsonIgnore
-//    private Set<Books> books;
-
     @JsonIgnoreProperties("publishers")
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "publisher_book", joinColumns = {@JoinColumn(name = "publisher_id")}, inverseJoinColumns =
     @JoinColumn(name = "book_id")
     )
     private Set<Books> books;
+
+    @JsonIgnoreProperties("publishers")
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "author_publisher", joinColumns = {@JoinColumn(name = "publisher_id")}, inverseJoinColumns =
+    @JoinColumn(name = "author_id")
+    )
+    private Set<Authors> authors;
 
     public Publishers() {
     }
