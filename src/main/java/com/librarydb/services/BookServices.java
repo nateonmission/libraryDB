@@ -255,12 +255,12 @@ public class BookServices {
     }
 
     // DEL delete an author api/authors/{author_ID}
-    public Optional<Authors> deleteAuthor(Long authorId) {
+    public String deleteAuthor(Long authorId) {
         LOGGER.info("service calling updateAuthor ==>");
         Optional<Authors> author = authorRepository.findById(authorId);
         if (author.isPresent()) {
             authorRepository.deleteById(authorId);
-            return author;
+            return author.get().getName();
         } else {
             throw new InfoNotFoundException("Author with id " + authorId + " not found");
         }
@@ -370,12 +370,12 @@ public class BookServices {
     }
 
     // DELETE a publisher api/publishers/{pubID}
-    public Publishers deletePublisher( Long pubID) {
+    public String deletePublisher( Long pubID) {
         LOGGER.info("service calling deletePublisher method ==>");
         Optional<Publishers> pub = publisherRepository.findById(pubID);
         if (pub != null) {
             publisherRepository.deleteById(pubID);
-            return pub.get();
+            return pub.get().getName();
         } else {
             throw new InfoNotFoundException("publisher with id: " + pubID + " does NOT exists");
         }

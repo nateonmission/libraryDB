@@ -183,7 +183,7 @@ public class bookController {
 
     // DEL delete an author
     @DeleteMapping(path = "/authors/{authorId}")
-    public Optional<Authors> deleteAuthor(@PathVariable(value = "authorId") Long authorId) {
+    public String deleteAuthor(@PathVariable(value = "authorId") Long authorId) {
         return bookServices.deleteAuthor(authorId);
     }
 
@@ -253,7 +253,7 @@ public class bookController {
 
     // DEL delete Publisher
     @DeleteMapping(path = "/publishers/{pubID}")
-    public Publishers deletePublisher(@PathVariable(value = "pubID") Long pubID) {
+    public String deletePublisher(@PathVariable(value = "pubID") Long pubID) {
         LOGGER.info("calling deletePublisher method from controller");
         return bookServices.deletePublisher(pubID);
     }
