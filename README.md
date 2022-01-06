@@ -19,19 +19,19 @@ efficiently keep track of their books!
 |        |                                    |                                ||
 | GET    |api/authors                         | returns all authors            | Tested  |
 | POST   |api/authors                         | creates new author             | Tested  |
-| GET    |api/authors/{authorID}                 | returns JSON for author        | X       |
+| GET    |api/authors/{authorID}                 | returns JSON for author        | Tested  |
 | PUT    |api/authors/{authorID}              | updates specific author        | Tested  |
 | DELETE |api/authors/{authorID}              | deletes specific author        | Tested  |
 |        |                                    |                                ||  
 | GET    |api/publishers                      | returns all publishers | Tested  |
 | POST   |api/publishers                         | creates new publisher          | Tested  |
-| GET    |api/publishers/{publisherID}        | get single publisher           | X       |
+| GET    |api/publishers/{publisherID}        | get single publisher           | Tested  |
 | PUT    |api/publishers/{publisherID}        | updates specific publisher     | Tested  |
 | DELETE |api/publishers/{publisherID}        | deletes specific publisher     | Tested  |
 |        |                                    |                                ||
 | GET    |api/genres                             | returns a list of genres       | Tested  |
 | POST   |api/genres                             | creates new genre              | Tested  |
-| GET    |api/genres/{genreID}                 | get single genre               | X       |
+| GET    |api/genres/{genreID}                 | get single genre               | Tested  |
 | PUT    |api/genres/{genreID}                 | updates                        | Tested  |
 | DELETE |api/genres/{genreID}                 | deletes                        | Tested  |
 |        |                                    |                                ||
