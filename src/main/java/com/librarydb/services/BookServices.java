@@ -116,7 +116,6 @@ public class BookServices {
         if (book != null) {
             throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
         } else {
-            // System.out.println(bookRequestObject.getPublisher());
             return bookRepository.save(bookObject);
         }
     }
