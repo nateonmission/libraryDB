@@ -32,34 +32,6 @@ public class bookController {
         this.bookServices = bookServices;
     }
 
-    private BookRepository bookRepository;
-    @Autowired
-    public void setBookRepository(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
-
-    private AuthorRepository authorRepository;
-    @Autowired
-    public void setAuthorRepository(AuthorRepository authorRepository) {
-
-        this.authorRepository = authorRepository;
-    }
-
-    private GenreRepository genreRepository;
-    @Autowired
-    public void setGenreRepository(GenreRepository genreRepository) {
-
-        this.genreRepository = genreRepository;
-    }
-
-    private PublisherRepository publisherRepository;
-    @Autowired
-    public void setPublisherRepository(PublisherRepository publisherRepository) {
-
-        this.publisherRepository = publisherRepository;
-    }
-
-
     @GetMapping("/")
     public String isAlive() {
         LOGGER.info("calling isAlive method from controller");

@@ -24,16 +24,14 @@ public class Publishers {
 
     @JsonIgnoreProperties("publishers")
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "publisher_book", joinColumns = {@JoinColumn(name = "publisher_id")}, inverseJoinColumns =
-    @JoinColumn(name = "book_id")
-    )
+    @JoinTable(name = "publisher_book", joinColumns = {@JoinColumn(name = "publisher_id")},
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Books> books;
 
     @JsonIgnoreProperties("publishers")
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "author_publisher", joinColumns = {@JoinColumn(name = "publisher_id")}, inverseJoinColumns =
-    @JoinColumn(name = "author_id")
-    )
+    @JoinTable(name = "author_publisher", joinColumns = {@JoinColumn(name = "publisher_id")},
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Authors> authors;
 
     public Publishers() {
@@ -62,6 +60,14 @@ public class Publishers {
     public void setBooks(Books books) {
         this.getBooks().add(books);
         books.getPublishers().add(this);
+    }
+
+    public Set<Authors> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Authors> authors) {
+        this.authors = authors;
     }
 }
 
