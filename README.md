@@ -78,7 +78,8 @@ Our minimum viable product (MVP) will be a database that persists four models--b
 - Create unit and integration tests
 
 ### Challenges/Hurdles
-Our biggest challenge was utilizing Many To Many mapping for the relationships between our models. Since we had not encountered during classtime an example of how this would be implemented, it required us to do quite a bit of research, trial/error, more research, then assistance from more experienced brains! But in the end, it was a good learning experience that will likely be useful in future applications. 
+- Our biggest challenge was utilizing Many To Many mapping for the relationships between our models. Since we had not encountered during classtime an example of how this would be implemented, it required us to do quite a bit of research, trial/error, more research, then assistance from more experienced brains! But in the end, it was a good learning experience that will likely be useful in future applications. 
+- Relatedly, we needed to utilize a "soft" delete of books. When we update a book's author, genre, and publisher, it is added to those join tables. Thus, deletion from the only the book table was not possible without major refactoring. So we added a removedFromLibrary variable so that our GET methods only return books that are set to false (meaning the books are still in our possession). 
 
 ## TECHNOLOGY USED
 1. Lucid Charts to create the ERD.
@@ -91,7 +92,8 @@ Our biggest challenge was utilizing Many To Many mapping for the relationships b
 ## INSTALLATION INSTRUCTIONS
 1. Fork and clone the repository.
 2. Using pgAdmin, create a database called ```librarydb```.
-3. Open the file ```libraryDB/src/main/resources/application-dev.properties``` and ensure line 1 states that port 9092 is going to be used. Change lines 6 and 7 to your PostgreSQL username and password. 
-4. 
+3. Open the file ```libraryDB/src/main/resources/application-dev.properties``` and ensure line 1 states that port 9092 is going to be used. Change lines 6 and 7 to your PostgreSQL username and password. Go ahead and fire up your server!
+4. You can then use these endpoints in Postman to add a book to your library, and then add authors, genres, and publishers!
+    - [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/4946b25c3802e77d763d?action=collection%2Fimport)
 
 
