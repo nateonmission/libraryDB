@@ -170,12 +170,12 @@ public class BookServices {
     }
 
     // DELETE a book api/books/{bookID}
-    public Books deleteBook(Long bookID) {
+    public String deleteBook(Long bookID) {
         LOGGER.info("service calling deleteBook method ==>");
         Optional<Books> book = bookRepository.findById(bookID);
         if (book != null) {
             bookRepository.deleteById(bookID);
-            return book.get();
+            return book.get().getTitle();
         } else {
             throw new InfoNotFoundException("book with id: " + bookID + " does NOT exist");
         }

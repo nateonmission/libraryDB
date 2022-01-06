@@ -132,7 +132,7 @@ public class bookController {
     // Delete a Book
 
     @DeleteMapping(path = "/books/{bookId}")
-    public Books deleteBook(@PathVariable(value = "bookId") Long bookID){
+    public String deleteBook(@PathVariable(value = "bookId") Long bookID){
 
         LOGGER.info("calling deleteBook method from controller");
         return bookServices.deleteBook(bookID);
