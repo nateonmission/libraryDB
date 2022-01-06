@@ -17,23 +17,23 @@ efficiently keep track of their books!
 | PUT    |api/books/{bookID}                  | updates specific book          | X      |
 | DELETE |api/books/{bookID}                  | deletes specific book          | X      |
 |        |                                    |                                ||
-| GET    |api/authors                         | returns all authors            | Tested |
-| POST   |api/authors                         | creates new author             | Tested |
+| GET    |api/authors                         | returns all authors            | X      |
+| POST   |api/authors                         | creates new author             | X      |
 | GET    |api/authors/{authorID}                 | returns JSON for author        | X      |
-| PUT    |api/authors/{authorID}              | updates specific author        | Tested |
-| DELETE |api/authors/{authorID}              | deletes specific author        | Tested |
+| PUT    |api/authors/{authorID}              | updates specific author        | X      |
+| DELETE |api/authors/{authorID}              | deletes specific author        | X      |
 |        |                                    |                                ||  
-| GET    |api/publishers                      | returns all publishers | Tested |
-| POST   |api/publishers                         | creates new publisher          | Tested |
+| GET    |api/publishers                      | returns JSON of all publishers | X      |
+| POST   |api/publishers                         | creates new publisher          | X      |
 | GET    |api/publishers/{publisherID}        | get single publisher           | X      |
-| PUT    |api/publishers/{publisherID}        | updates specific publisher     | Tested |
-| DELETE |api/publishers/{publisherID}        | deletes specific publisher     | Tested |
+| PUT    |api/publishers/{publisherID}        | updates specific publisher     | X      |
+| DELETE |api/publishers/{publisherID}        | deletes specific publisher     | X      |
 |        |                                    |                                ||
 | GET    |api/genres                             | returns a list of genres       | Tested |
 | POST   |api/genres                             | creates new genre              | Tested |
 | GET    |api/genres/{genreID}                 | get single genre               | X      |
 | PUT    |api/genres/{genreID}                 | updates                        | Tested |
-| DELETE |api/genres/{genreID}                 | deletes                        | Tested |
+| DELETE |api/genres/{genreID}                 | deletes                        | X      |
 |        |                                    |                                ||
 | GET    |api/genres/{genreID}/books             | returns JSON of books in genre ||
 | GET    |api/authors/{authorID}/books        | returns JSON of author's books ||
@@ -76,6 +76,9 @@ Our minimum viable product (MVP) will be a database that persists four models--b
 - Create a User (model, repository, service, controller)
 - Handle security with JWT
 - Create unit and integration tests
+
+### Challenges/Hurdles
+Our biggest challenge was utilizing Many To Many mapping for the relationships between our models. Since we had not encountered during classtime an example of how this would be implemented, it required us to do quite a bit of research, trial/error, more research, then assistance from more experienced brains! But in the end, it was a good learning experience that will likely be useful in future applications. 
 
 ## TECHNOLOGY USED
 1. Lucid Charts to create the ERD.
