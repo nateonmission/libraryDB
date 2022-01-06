@@ -162,14 +162,14 @@ public class BookServices {
         return genreRepository.save(currentGenre);
     }
 
-    public Publishers putBookPublishers(int publisherID, HashMap<String, ArrayList<Integer>> books) {
+    public Publishers putBookPublishers(Long publisherID, HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("calling updateBookPublisher method ==>");
-        ArrayList<Integer> bookIds = books.get("books");
-        Publishers currentPublisher = publisherRepository.findById((long) publisherID).get();
-        for (int bookId : bookIds) {
+        ArrayList<Long> bookIds = books.get("books");
+        Publishers currentPublisher = publisherRepository.findById( publisherID).get();
+        for (long bookId : bookIds) {
             if (!bookRepository.existsById((long) bookId))
                 throw new InfoNotFoundException("Book not found");
-            currentPublisher.setBooks(bookRepository.findById((long) bookId).get());
+            currentPublisher.setBooks(bookRepository.findById( bookId).get());
         }
         return publisherRepository.save(currentPublisher);
     }
