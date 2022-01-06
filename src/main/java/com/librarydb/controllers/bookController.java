@@ -24,14 +24,8 @@ public class bookController {
         this.bookServices = bookServices;
     }
 
-    @GetMapping("/")
-    public String isAlive() {
-        LOGGER.info("calling isAlive method from controller");
-        return bookServices.isAlive();
-    }
-
     // BOOKS
-    // GET all Books
+    // GET All Books
     @GetMapping("/books")
     public List<Books> getBooks() {
         LOGGER.info("calling getBooks method from controller");
@@ -75,57 +69,43 @@ public class bookController {
 
     // PUT Update a Book
     @PutMapping(path = "/books/{book_ID}")
-    public Books updateBook(@PathVariable(value = "bookId") Long bookId, @RequestBody Books bookObject) {
+    public Books updateBook(
+            @PathVariable(value = "bookId") Long bookId,
+            @RequestBody Books bookObject) {
         LOGGER.info("calling updateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
     }
 
-    // Update book author  "/authors/books/{authorID}"
+    // Update author's books  "/authors/books/{authorID}"
     @PutMapping(path = "/authors/books/{authorID}")
     public Authors putBookAuthor(
             @PathVariable(value = "authorID") int authorID,
-            @RequestBody HashMap<String,
-                    ArrayList<Integer>> books
-    ) {
+            @RequestBody HashMap<String, ArrayList<Integer>> books) {
         LOGGER.info("calling updateBookAuthor method from controller");
-//        ArrayList<Integer> bookIds = books.get("books");
-//        Authors currentAuthor = authorRepository.findById((long) authorID).get();
-//        for (int bookId : bookIds) {
-//            if (!bookRepository.existsById((long) bookId))
-//                throw new InfoNotFoundException("Book not found");
-//            currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
-//        }
-//        return authorRepository.save(currentAuthor);
         return bookServices.putBookAuthor(authorID, books);
     }
 
-    // Update book genre
+    // Update a genre's books
     @PutMapping(path = "/genres/books/{genreID}")
     public Genres putBookGenres(
             @PathVariable(value = "genreID") int genreID,
-            @RequestBody HashMap<String,
-                    ArrayList<Integer>> books
-    ) {
+            @RequestBody HashMap<String, ArrayList<Integer>> books) {
         LOGGER.info("calling updateBookGenre method from controller");
         return bookServices.putBookGenres(genreID, books);
     }
 
-    // Update book publisher
+    // Update publisher's books
     @PutMapping(path = "/publishers/books/{publisherID}")
     public Publishers putBookPublishers(
             @PathVariable(value = "publisherID") Long publisherID,
-            @RequestBody HashMap<String,
-                    ArrayList<Long>> books
-    ) {
+            @RequestBody HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("calling updateBookPublishers method from controller");
         return bookServices.putBookPublishers(publisherID, books);
     }
 
     // Delete a Book
-
     @DeleteMapping(path = "/books/{bookId}")
     public String deleteBook(@PathVariable(value = "bookId") Long bookID){
-
         LOGGER.info("calling deleteBook method from controller");
         return bookServices.deleteBook(bookID);
     }
@@ -176,6 +156,7 @@ public class bookController {
     // DEL delete an author
     @DeleteMapping(path = "/authors/{authorId}")
     public String deleteAuthor(@PathVariable(value = "authorId") Long authorId) {
+        LOGGER.info("controller calling deleteAuthor ==>");
         return bookServices.deleteAuthor(authorId);
     }
 
@@ -202,7 +183,9 @@ public class bookController {
 
     // PUT Update a Genre
     @PutMapping(path = "/genres/{genreID}")
-    public Genres updateGenre(@PathVariable(value = "genreID") Long genreID, @RequestBody Genres genreObject) {
+    public Genres updateGenre(
+            @PathVariable(value = "genreID") Long genreID,
+            @RequestBody Genres genreObject) {
         LOGGER.info("calling updateGenre method from controller");
         return bookServices.updateGenre(genreID, genreObject);
     }
@@ -238,7 +221,9 @@ public class bookController {
 
     // PUT Update Publisher
     @PutMapping(path = "/publishers/{pubID}")
-    public Publishers updatePublisher(@PathVariable(value = "pubID") Long pubID, @RequestBody Publishers pubObject) {
+    public Publishers updatePublisher(
+            @PathVariable(value = "pubID") Long pubID,
+            @RequestBody Publishers pubObject) {
         LOGGER.info("calling updatePublisher method from controller");
         return bookServices.updatePublisher(pubID, pubObject);
     }
