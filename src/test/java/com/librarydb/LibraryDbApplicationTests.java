@@ -26,6 +26,8 @@ class LibraryDbApplicationTests {
     @MockBean
     private BookServices services;
 
+
+    // BASIC CONNECTION TESTS
     @Test
     public void contextLoads(){
         assertThat(controller).isNotNull();
@@ -35,6 +37,16 @@ class LibraryDbApplicationTests {
     public void greetingShouldReturnMessageFromService() throws Exception {
         when(services.isAlive()).thenReturn("<h1>I'm Alive</h1>");
     }
+
+    // GET all from each model
+
+    @Test
+    public void getAllAuthors() throws Exception {
+        when(services.getAuthor()).thenReturn("<h1>I'm Alive</h1>");
+    }
+
+
+
 
 
 
