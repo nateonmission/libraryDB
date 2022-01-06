@@ -80,7 +80,7 @@ public class bookController {
         return bookServices.updateBook(bookId, bookObject);
     }
 
-    // Update book author
+    // Update book author  "/authors/books/{authorID}"
     @PutMapping(path = "/authors/books/{authorID}")
     public Authors putBookAuthor(
             @PathVariable(value = "authorID") int authorID,
@@ -113,9 +113,9 @@ public class bookController {
     // Update book publisher
     @PutMapping(path = "/publishers/books/{publisherID}")
     public Publishers putBookPublishers(
-            @PathVariable(value = "publishersID") int publisherID,
+            @PathVariable(value = "publisherID") Long publisherID,
             @RequestBody HashMap<String,
-                    ArrayList<Integer>> books
+                    ArrayList<Long>> books
     ) {
         LOGGER.info("calling updateBookPublishers method from controller");
         return bookServices.putBookPublishers(publisherID, books);
