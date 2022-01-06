@@ -25,7 +25,13 @@ import java.util.logging.Logger;
 public class bookController {
     private static final Logger LOGGER = Logger.getLogger(bookController.class.getName());
 
-    // JavaBeans POJO - One Instance for whole class
+    private BookServices bookServices;
+    @Autowired
+    public void setBookServices(BookServices bookServices) {
+
+        this.bookServices = bookServices;
+    }
+
     private BookRepository bookRepository;
     @Autowired
     public void setBookRepository(BookRepository bookRepository) {
@@ -53,12 +59,6 @@ public class bookController {
         this.publisherRepository = publisherRepository;
     }
 
-    private BookServices bookServices;
-    @Autowired
-    public void setBookServices(BookServices bookServices) {
-
-        this.bookServices = bookServices;
-    }
 
     @GetMapping("/")
     public String isAlive() {
@@ -110,9 +110,8 @@ public class bookController {
     }
 
     // PUT Update a Book
-
-    @PutMapping(path = "/books/{bookID}")
-    public Books updateBook(Long bookId, Books bookObject){
+    @PutMapping(path = "/books/{book_ID}")
+    public Books updateBook(@PathVariable(value = "bookId") Long bookId, @RequestBody Books bookObject) {
         LOGGER.info("calling updateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
     }

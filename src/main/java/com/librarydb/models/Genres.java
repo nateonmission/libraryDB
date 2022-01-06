@@ -19,9 +19,6 @@ public class Genres {
     @Column(name="genre_name")
     private String name;
 
-//    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "genres")
-//    private Set<Books> books;
-
     @JsonIgnoreProperties("genres")
     @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "genre_book", joinColumns = {@JoinColumn(name = "genre_id")}, inverseJoinColumns =
