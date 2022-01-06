@@ -52,7 +52,20 @@ public class BookServices {
         if (books.isEmpty()) {
             throw new InfoNotFoundException("no books found");
         } else {
-            return books;
+            LOGGER.info("Sorting book records");
+            List<Books> newBooks = new ArrayList<>();
+            for(Books book : books){
+                if(!book.isRemovedFromLibrary()) {
+                    try {
+                        newBooks.add(book);
+                        LOGGER.info("book added");
+                    } catch (Exception e) {
+                        throw new InfoNotFoundException( "Null!!!" );
+                    }
+                }
+            }
+            LOGGER.info("returning...");
+            return newBooks;
         }
     }
 
@@ -172,8 +185,9 @@ public class BookServices {
         LOGGER.info("service calling deleteBook method ==>");
         Optional<Books> book = bookRepository.findById(bookID);
         if (book != null) {
-            bookRepository.deleteById(bookID);
-            return book.get().getTitle();
+            book.get().setRemovedFromLibrary(true);
+            bookRepository.save(book.get());
+            return (book.get().getTitle()) + " -- REMOVED = " + book.get().isRemovedFromLibrary();
         } else {
             throw new InfoNotFoundException("book with id: " + bookID + " does NOT exist");
         }
