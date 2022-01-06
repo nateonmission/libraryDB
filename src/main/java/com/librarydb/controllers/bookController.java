@@ -24,6 +24,12 @@ public class bookController {
         this.bookServices = bookServices;
     }
 
+    @GetMapping("/")
+    public String isAlive(){
+        LOGGER.info("calling isAlive method from controller");
+        return "<h1>I'm Alive</h1>";
+    }
+
     // BOOKS
     // GET All Books
     @GetMapping("/books")

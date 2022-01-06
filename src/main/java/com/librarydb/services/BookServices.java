@@ -44,6 +44,12 @@ public class BookServices {
         this.publisherRepository = publisherRepository;
     }
 
+
+    public String isAlive() {
+        LOGGER.info("calling isAlive method ==>");
+        return "<h1>I'm Alive</h1>";
+    }
+
     //BOOKS
     // GET all books api/books
     public List<Books> getBooks() {
