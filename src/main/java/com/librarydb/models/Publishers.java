@@ -29,6 +29,13 @@ public class Publishers {
     )
     private Set<Books> books;
 
+    @JsonIgnoreProperties("publishers")
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "author_publisher", joinColumns = {@JoinColumn(name = "publisher_id")}, inverseJoinColumns =
+    @JoinColumn(name = "author_id")
+    )
+    private Set<Authors> authors;
+
     public Publishers() {
     }
 

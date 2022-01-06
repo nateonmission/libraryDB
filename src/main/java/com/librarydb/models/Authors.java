@@ -25,10 +25,15 @@ public class Authors {
             inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Books> books;
 
-    @ManyToOne
-    @JoinColumn(name="publishers")
-    @JsonIgnore
-    private Publishers publishers;
+
+    @JsonIgnoreProperties("authors")
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "author_publisher", joinColumns = {@JoinColumn(name = "author_id")}, inverseJoinColumns =
+    @JoinColumn(name = "publisher_id")
+    )
+    private Set<Publishers> publishers;
+
+
 
     public Authors() {
     }
