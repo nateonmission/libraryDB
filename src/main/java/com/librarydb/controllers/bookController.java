@@ -76,7 +76,7 @@ public class bookController {
         return bookServices.updateBook(bookId, bookObject);
     }
 
-    // Update author's books  "/authors/books/{authorID}"
+    // PUT Update author's books (add bookIds to author)  "/authors/books/{authorID}"
     @PutMapping(path = "/authors/books/{authorID}")
     public Authors putBookAuthor(
             @PathVariable(value = "authorID") int authorID,
@@ -85,7 +85,7 @@ public class bookController {
         return bookServices.putBookAuthor(authorID, books);
     }
 
-    // Update a genre's books
+    // PUT Update a genre's books (add bookIds to genre)
     @PutMapping(path = "/genres/books/{genreID}")
     public Genres putBookGenres(
             @PathVariable(value = "genreID") int genreID,
@@ -94,7 +94,7 @@ public class bookController {
         return bookServices.putBookGenres(genreID, books);
     }
 
-    // Update publisher's books
+    // PUT Update publisher's books (add bookIds to publisher)
     @PutMapping(path = "/publishers/books/{publisherID}")
     public Publishers putBookPublishers(
             @PathVariable(value = "publisherID") Long publisherID,
@@ -103,49 +103,49 @@ public class bookController {
         return bookServices.putBookPublishers(publisherID, books);
     }
 
-    // Delete a Book
+    // DELETE a Book
     @DeleteMapping(path = "/books/{bookId}")
     public String deleteBook(@PathVariable(value = "bookId") Long bookID){
         LOGGER.info("calling deleteBook method from controller");
         return bookServices.deleteBook(bookID);
     }
 
-    // GET all authors
+    // GET all Authors
     @GetMapping(path = "/authors")
     public List<Authors> getAuthors() {
         LOGGER.info("controller calling getAuthors ==>");
         return bookServices.getAuthors();
     }
 
-    // POST create an author
+    // POST create an Author
     @PostMapping(path = "/authors")
     public Authors createAuthor(@RequestBody Authors authorObject) {
         LOGGER.info("controller calling createAuthor ==>");
         return bookServices.createAuthor(authorObject);
     }
 
-    // GET a single author
+    // GET a single Author
     @GetMapping(path = "/authors/{authorId}")
     public Optional getAuthor(@PathVariable Long authorId) {
         LOGGER.info("controller calling getAuthor ==>");
         return bookServices.getAuthor(authorId);
     }
 
-    // GET a book's authors
+    // GET a book's Authors
     @GetMapping(path = "/books/{booksId}/authors")
     public List<Authors> getBookAuthors(@PathVariable Long booksId) {
         LOGGER.info("controller calling getBookAuthors ==>");
         return bookServices.getBookAuthors(booksId);
     }
 
-    // GET a publisher's authors
+    // GET a publisher's Authors
     @GetMapping(path = "/publishers/{publishersId}/authors")
     public List<Authors> getPublisherAuthors(@PathVariable Long publishersId) {
         LOGGER.info("controller calling getPublisherAuthors ==>");
         return bookServices.getPublisherAuthors(publishersId);
     }
 
-    // PUT update an author
+    // PUT update an Author
     @PutMapping(path = "/authors/{authorId}")
     public Authors updateAuthor(@PathVariable(value = "authorId") Long authorId,
                                 @RequestBody Authors authorObject) {
@@ -153,7 +153,7 @@ public class bookController {
         return bookServices.updateAuthor(authorId, authorObject);
     }
 
-    // DEL delete an author
+    // DEL delete an Author
     @DeleteMapping(path = "/authors/{authorId}")
     public String deleteAuthor(@PathVariable(value = "authorId") Long authorId) {
         LOGGER.info("controller calling deleteAuthor ==>");
@@ -214,7 +214,8 @@ public class bookController {
 
     // GET a single Publisher
     @GetMapping(path = "/publishers/{publisher_ID}")
-    public Publishers getPublisher(@PathVariable(value = "publisher_ID") Long publisherId) {
+    public Publishers getPublisher(
+            @PathVariable(value = "publisher_ID") Long publisherId) {
         LOGGER.info("controller calling getPublisher ==>");
         return bookServices.getPublisher(publisherId);
     }

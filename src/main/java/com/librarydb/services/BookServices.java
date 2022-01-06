@@ -124,7 +124,8 @@ public class BookServices {
         LOGGER.info("service calling createBook ==>");
         Books book = bookRepository.findByTitle(bookObject.getTitle());
         if (book != null) {
-            throw new InfoExistsException("book with name " + book.getTitle() + " already exists");
+            throw new InfoExistsException("book with name "
+                    + book.getTitle() + " already exists");
         } else {
             return bookRepository.save(bookObject);
         }
@@ -187,9 +188,11 @@ public class BookServices {
         if (book != null) {
             book.get().setRemovedFromLibrary(true);
             bookRepository.save(book.get());
-            return (book.get().getTitle()) + " -- REMOVED = " + book.get().isRemovedFromLibrary();
+            return (book.get().getTitle()) + " -- REMOVED = "
+                    + book.get().isRemovedFromLibrary();
         } else {
-            throw new InfoNotFoundException("book with id: " + bookID + " does NOT exist");
+            throw new InfoNotFoundException("book with id: "
+                    + bookID + " does NOT exist");
         }
     }
 
@@ -224,7 +227,8 @@ public class BookServices {
         if (author.isPresent()) {
             return author;
         } else {
-            throw new InfoNotFoundException("Author with id " + authorId + "not found");
+            throw new InfoNotFoundException("Author with id "
+                    + authorId + "not found");
         }
     }
 
@@ -315,7 +319,7 @@ public class BookServices {
     }
 
     // PUT update a genre api/genres/{genre_ID}
-    public Genres updateGenre( Long genreID, Genres genreObject) {
+    public Genres updateGenre(Long genreID, Genres genreObject) {
         LOGGER.info("service calling updateGenre method ==> ");
         Optional<Genres> genre = genreRepository.findById(genreID);
         if (genre == null) {
@@ -328,7 +332,7 @@ public class BookServices {
     }
 
     // DELETE a genre api/genres/{genreID}
-    public String deleteGenre( Long genreID) {
+    public String deleteGenre(Long genreID) {
         LOGGER.info("service calling deleteCategory method ==>");
         Optional<Genres> genre = genreRepository.findById(genreID);
         if (genre != null) {
@@ -377,7 +381,7 @@ public class BookServices {
     }
 
     // PUT update a publisher api/publishers/{pub_ID}
-    public Publishers updatePublisher( Long pubID, Publishers publisherObject) {
+    public Publishers updatePublisher(Long pubID, Publishers publisherObject) {
         LOGGER.info("service calling updatePublisher method ==> ");
         Optional<Publishers> pub = publisherRepository.findById(pubID);
         if (pub == null) {
@@ -390,7 +394,7 @@ public class BookServices {
     }
 
     // DELETE a publisher api/publishers/{pubID}
-    public String deletePublisher( Long pubID) {
+    public String deletePublisher(Long pubID) {
         LOGGER.info("service calling deletePublisher method ==>");
         Optional<Publishers> pub = publisherRepository.findById(pubID);
         if (pub != null) {

@@ -129,8 +129,6 @@ public class Books {
         genre.getBooks().remove(this);
     }
 
-
-
     public Set<Authors> getAuthors() {
         return authors;
     }
