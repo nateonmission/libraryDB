@@ -152,7 +152,7 @@ public class bookController {
     }
 
     // GET a book's authors
-    @GetMapping(path = "/books/{bookId}/authors")
+    @GetMapping(path = "/books/{booksId}/authors")
     public List<Authors> getBookAuthors(@PathVariable Long booksId) {
         LOGGER.info("controller calling getBookAuthors ==>");
         return bookServices.getBookAuthors(booksId);
