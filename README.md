@@ -9,37 +9,37 @@ efficiently keep track of their books!
 
 ## END POINTS
 
-| Method |Endpoints                           | Description                    | Done |
-|--------|------------------------------------|--------------------------------|------|
-| GET    |api/books                           | returns all books              | X    |
-| POST   |api/books                           | creates new book               | X    |
-| GET    |api/books/{bookID}                  | returns a book                 | X    |
-| PUT    |api/books/{bookID}                  | updates specific book          | X    |
-| DELETE |api/books/{bookID}                  | deletes specific book          | X    |
+| Method |Endpoints                           | Description                    | Done   |
+|--------|------------------------------------|--------------------------------|--------|
+| GET    |api/books                           | returns all books              | X      |
+| POST   |api/books                           | creates new book               | X      |
+| GET    |api/books/{bookID}                  | returns a book                 | X      |
+| PUT    |api/books/{bookID}                  | updates specific book          | X      |
+| DELETE |api/books/{bookID}                  | deletes specific book          | X      |
 |        |                                    |                                ||
-| GET    |api/authors                         | returns all authors            | X    |
-| POST   |api/authors                         | creates new author             | X    |
-| GET    |api/authors/{authorID}                 | returns JSON for author        | X    |
-| PUT    |api/authors/{authorID}              | updates specific author        | X    |
-| DELETE |api/authors/{authorID}              | deletes specific author        | X    |
+| GET    |api/authors                         | returns all authors            | X      |
+| POST   |api/authors                         | creates new author             | X      |
+| GET    |api/authors/{authorID}                 | returns JSON for author        | X      |
+| PUT    |api/authors/{authorID}              | updates specific author        | X      |
+| DELETE |api/authors/{authorID}              | deletes specific author        | X      |
 |        |                                    |                                ||  
-| GET    |api/publishers                      | returns JSON of all publishers | X    |
-| POST   |api/publishers                         | creates new publisher          | X    |
-| GET    |api/publishers/{publisherID}        | get single publisher           | X    |
-| PUT    |api/publishers/{publisherID}        | updates specific publisher     | X    |
-| DELETE |api/publishers/{publisherID}        | deletes specific publisher     | X    |
+| GET    |api/publishers                      | returns JSON of all publishers | X      |
+| POST   |api/publishers                         | creates new publisher          | X      |
+| GET    |api/publishers/{publisherID}        | get single publisher           | X      |
+| PUT    |api/publishers/{publisherID}        | updates specific publisher     | X      |
+| DELETE |api/publishers/{publisherID}        | deletes specific publisher     | X      |
 |        |                                    |                                ||
-| GET    |api/genres                             | returns a list of genres       | X    |
-| POST   |api/genres                             | creates new genre              | X    |
-| GET    |api/genres/{genreID}                 | get single genre               | X    |
-| PUT    |api/genres/{genreID}                 | updates                        | X    |
-| DELETE |api/genres/{genreID}                 | deletes                        | X    |
+| GET    |api/genres                             | returns a list of genres       | Tested |
+| POST   |api/genres                             | creates new genre              | Tested |
+| GET    |api/genres/{genreID}                 | get single genre               | X      |
+| PUT    |api/genres/{genreID}                 | updates                        | Tested |
+| DELETE |api/genres/{genreID}                 | deletes                        | X      |
 |        |                                    |                                ||
 | GET    |api/genres/{genreID}/books             | returns JSON of books in genre ||
 | GET    |api/authors/{authorID}/books        | returns JSON of author's books ||
-| GET    |api/books/{bookID}/author             | returns JSON of book's authors | X    |
+| GET    |api/books/{bookID}/author             | returns JSON of book's authors | X      |
 | GET    |api/publishers/{publisherID}/books  | returns JSON of pub's books    ||
-| GET    |api/publishers/{publisherID}/authors| returns JSON of pub's authors  | X    |
+| GET    |api/publishers/{publisherID}/authors| returns JSON of pub's authors  | X      |
 
 ## PLANNING
 

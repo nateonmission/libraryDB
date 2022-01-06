@@ -312,12 +312,12 @@ public class BookServices {
     }
 
     // DELETE a genre api/genres/{genreID}
-    public Genres deleteGenre( Long genreID) {
+    public String deleteGenre( Long genreID) {
         LOGGER.info("service calling deleteCategory method ==>");
         Optional<Genres> genre = genreRepository.findById(genreID);
         if (genre != null) {
             genreRepository.deleteById(genreID);
-            return genre.get();
+            return genre.get().getName();
         } else {
             throw new InfoNotFoundException("category with id: " + genreID + " does NOT exists");
         }

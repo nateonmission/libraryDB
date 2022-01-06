@@ -217,8 +217,8 @@ public class bookController {
 
     // DEL delete a Genre
     @DeleteMapping(path = "/genres/{genreID}")
-    public Genres deleteCategory(@PathVariable(value = "genreID") Long genreID) {
-        LOGGER.info("calling deleteCategory method from controller");
+    public String deleteGenre(@PathVariable(value = "genreID") Long genreID) {
+        LOGGER.info("calling deleteGenre method from controller");
         return bookServices.deleteGenre(genreID);
     }
 
