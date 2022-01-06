@@ -37,6 +37,9 @@ public class Books {
     @Column
     private boolean isAvailable;
 
+    @Column
+    private boolean removedFromLibrary;
+
     @JsonIgnoreProperties("books")
     @ManyToMany(mappedBy = "books", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Authors> authors;
@@ -152,5 +155,13 @@ public class Books {
 
     public void setPublishers(Set<Publishers> publishers) {
         this.publishers = publishers;
+    }
+
+    public void setRemovedFromLibrary(boolean removedFromLibrary) {
+        this.removedFromLibrary = removedFromLibrary;
+    }
+
+    public boolean isRemovedFromLibrary() {
+        return removedFromLibrary;
     }
 }

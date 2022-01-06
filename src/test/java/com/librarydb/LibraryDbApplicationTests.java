@@ -40,10 +40,10 @@ class LibraryDbApplicationTests {
 
     // GET all from each model
 
-    @Test
-    public void getAllAuthors() throws Exception {
-        when(services.getAuthor()).thenReturn("<h1>I'm Alive</h1>");
-    }
+//    @Test
+//    public void getAllAuthors() throws Exception {
+//        when(services.getAuthor(1L)).thenReturn();
+//    }
 
 
 
