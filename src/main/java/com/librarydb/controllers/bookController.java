@@ -239,7 +239,7 @@ public class bookController {
 
     // GET a single Publisher
     @GetMapping(path = "/publishers/{publisher_ID}")
-    public Optional getPublisher(@PathVariable Long publisherId) {
+    public Publishers getPublisher(@PathVariable(value = "publisher_ID") Long publisherId) {
         LOGGER.info("controller calling getPublisher ==>");
         return bookServices.getPublisher(publisherId);
     }

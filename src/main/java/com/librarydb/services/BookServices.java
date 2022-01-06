@@ -346,11 +346,11 @@ public class BookServices {
     }
 
     // GET a single publisher api/publisher/{publisher_ID}
-    public Optional getPublisher(Long publisherId) {
+    public Publishers getPublisher(Long publisherId) {
         LOGGER.info("service calling getPublisher ==>");
-        Optional publisher = publisherRepository.findById(publisherId);
+        Optional<Publishers> publisher = publisherRepository.findById(publisherId);
         if (publisher.isPresent()) {
-            return publisher;
+            return publisher.get();
         } else {
             throw new InfoNotFoundException("Publisher with id " + publisherId + "not found");
         }
