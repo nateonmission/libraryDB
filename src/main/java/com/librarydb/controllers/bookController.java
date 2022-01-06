@@ -203,7 +203,7 @@ public class bookController {
 
     // GET a single Genre
     @GetMapping(path = "/genres/{genre_ID}")
-    public Optional getGenre(@PathVariable Long genreId) {
+    public Optional getGenre(@PathVariable(value = "genre_ID") Long genreId) {
         LOGGER.info("controller calling getGenre ==>");
         return bookServices.getGenre(genreId);
     }
