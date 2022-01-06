@@ -46,21 +46,21 @@ public class bookController {
     }
 
     // GET an author's books
-    @GetMapping(path = "/authors/{authorId}/books")
+    @GetMapping(path = "/authors/{authorsId}/books")
     public Set<Books> getAuthorBooks(@PathVariable Long authorsId) {
         LOGGER.info("controller calling getAuthorBooks ==>");
         return bookServices.getAuthorBooks(authorsId);
     }
 
     // GET a publisher's books
-    @GetMapping(path = "/publishers/{publisherId}/books")
+    @GetMapping(path = "/publishers/{publishersId}/books")
     public Set<Books> getPublisherBooks(@PathVariable Long publishersId) {
         LOGGER.info("controller calling getPublisherBooks ==>");
         return bookServices.getPublisherBooks(publishersId);
     }
 
     // GET a genre's books
-    @GetMapping(path = "/genres/{genreId}/books")
+    @GetMapping(path = "/genres/{genresId}/books")
     public Set<Books> getGenreBooks(@PathVariable Long genresId) {
         LOGGER.info("controller calling getGenreBooks ==>");
         return bookServices.getGenreBooks(genresId);
@@ -152,7 +152,7 @@ public class bookController {
     }
 
     // GET a book's authors
-    @GetMapping(path = "/books/{bookId}/authors")
+    @GetMapping(path = "/books/{booksId}/authors")
     public List<Authors> getBookAuthors(@PathVariable Long booksId) {
         LOGGER.info("controller calling getBookAuthors ==>");
         return bookServices.getBookAuthors(booksId);
