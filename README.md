@@ -42,6 +42,9 @@ efficiently keep track of their books!
 | PUT    | api/genres/{genreID}                 | updates a specific genre       | Genre info     |
 | DELETE | api/genres/{genreID}                 | deletes a specific genre       | None           |
 |        |                                      |                                |                |
+| GET    | api/books/media/{mediaType}          | returns books by media type    | None           |
+| GET    | api/books/available/{available}      | returns books by availability  | None           |
+| GET    | api/books/read/{read}                | returns books by isRead        | None           |
 <!--| GET    | api/publishers/{publisherID}/authors | returns a publisher's authors  | None           |-->
 <!--| PUT    | api/publishers/authors/{publisherID} | updates an publisher's authors | Author ids     |-->
 
