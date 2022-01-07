@@ -254,15 +254,22 @@ public class bookController {
     // GET books by MediaType
     @GetMapping("/books/media/{MediaType}")
     public List<Books> getBooksByMediaType(@PathVariable(value = "MediaType") String MediaType) {
-        LOGGER.info("calling getBooks method from controller");
+        LOGGER.info("calling getBooksByMediaType method from controller");
         return bookServices.getBooksByMediaType(MediaType);
     }
 
-    // GET books by MediaType
+    // GET books by Availability
     @GetMapping("/books/available/{available}")
     public List<Books> getBooksByAvailability(@PathVariable(value = "available") boolean available) {
-        LOGGER.info("calling getBooks method from controller");
+        LOGGER.info("calling getBooksByAvailability method from controller");
         return bookServices.getBooksByAvailability(available);
+    }
+
+    // GET books by isRead
+    @GetMapping("/books/read/{read}")
+    public List<Books> getBooksByIsRead(@PathVariable(value = "read") boolean read) {
+        LOGGER.info("calling getBooksByIsRead method from controller");
+        return bookServices.getBooksByIsRead(read);
     }
 
 }

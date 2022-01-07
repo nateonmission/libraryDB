@@ -478,7 +478,7 @@ public class BookServices {
         } else {
             LOGGER.info("Sorting book records");
             List<Books> newBooks = new ArrayList<>();
-            for(Books book : books){
+            for (Books book : books) {
                 if (!book.isRemovedFromLibrary() && book.isAvailable() == available) {
                     try {
                         newBooks.add(book);
@@ -492,6 +492,31 @@ public class BookServices {
             LOGGER.info("returning...");
             return newBooks;
         }
+    }
+
+        // GET books by isRead api/books/read/boolean
+        public List<Books> getBooksByIsRead(boolean read) {
+            LOGGER.info("service calling getBooksByIsRead ==>");
+            List<Books> books = bookRepository.findAll();
+            if (books.isEmpty()) {
+                throw new InfoNotFoundException("no books found");
+            } else {
+                LOGGER.info("Sorting book records");
+                List<Books> newBooks = new ArrayList<>();
+                for(Books book : books){
+                    if (!book.isRemovedFromLibrary() && book.isRead() == read) {
+                        try {
+                            newBooks.add(book);
+                            LOGGER.info("book added");
+                        } catch (Exception e) {
+                            throw new InfoNotFoundException("Null!!!");
+                        }
+                    }
+
+                }
+                LOGGER.info("returning...");
+                return newBooks;
+            }
     }
 
 }
