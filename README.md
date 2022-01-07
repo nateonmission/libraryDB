@@ -27,9 +27,7 @@ efficiently keep track of their books!
 | POST   | api/authors                          | creates new author             | Author info    |
 | GET    | api/authors/{authorID}               | returns a single author        | None           |
 | GET    | api/books/{bookID}/authors           | returns a book's authors       | None           |
-| GET    | api/publishers/{publisherID}/authors | returns a publisher's authors  | None           |
 | PUT    | api/authors/{authorID}               | updates specific author        | Author info    |
-| PUT    | api/publishers/authors/{publisherID} | updates an publisher's authors | Author ids     |
 | DELETE | api/authors/{authorID}               | deletes specific author        | None           |
 |        |                                      |                                |                |  
 | GET    | api/publishers                       | returns list of all publishers | None           |
@@ -43,6 +41,9 @@ efficiently keep track of their books!
 | GET    | api/genres/{genreID}                 | returns a single genre         | None           |
 | PUT    | api/genres/{genreID}                 | updates a specific genre       | Genre info     |
 | DELETE | api/genres/{genreID}                 | deletes a specific genre       | None           |
+|        |                                      |                                |                |
+<!--| GET    | api/publishers/{publisherID}/authors | returns a publisher's authors  | None           |-->
+<!--| PUT    | api/publishers/authors/{publisherID} | updates an publisher's authors | Author ids     |-->
 
 
 ## PLANNING

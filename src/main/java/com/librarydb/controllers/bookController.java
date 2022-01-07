@@ -85,8 +85,8 @@ public class bookController {
     // PUT Update author's books (add bookIds to author)  "/authors/books/{authorID}"
     @PutMapping(path = "/authors/books/{authorID}")
     public Authors putBookAuthor(
-            @PathVariable(value = "authorID") int authorID,
-            @RequestBody HashMap<String, ArrayList<Integer>> books) {
+            @PathVariable(value = "authorID") Long authorID,
+            @RequestBody HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("calling updateBookAuthor method from controller");
         return bookServices.putBookAuthor(authorID, books);
     }
@@ -94,8 +94,8 @@ public class bookController {
     // PUT Update a genre's books (add bookIds to genre)
     @PutMapping(path = "/genres/books/{genreID}")
     public Genres putBookGenres(
-            @PathVariable(value = "genreID") int genreID,
-            @RequestBody HashMap<String, ArrayList<Integer>> books) {
+            @PathVariable(value = "genreID") Long genreID,
+            @RequestBody HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("calling updateBookGenre method from controller");
         return bookServices.putBookGenres(genreID, books);
     }

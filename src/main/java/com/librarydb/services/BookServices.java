@@ -161,11 +161,11 @@ public class BookServices {
     }
 
     // PUT Update author's books (add bookIds to author)
-    public Authors putBookAuthor(int authorID, HashMap<String, ArrayList<Integer>> books) {
+    public Authors putBookAuthor(Long authorID, HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("service calling updateBookAuthor method ==>");
-        ArrayList<Integer> bookIds = books.get("books");
+        ArrayList<Long> bookIds = books.get("books");
         Authors currentAuthor = authorRepository.findById((long) authorID).get();
-        for (int bookId : bookIds) {
+        for (Long bookId : bookIds) {
             if (!bookRepository.existsById((long) bookId))
                 throw new InfoNotFoundException("Book not found");
             currentAuthor.setBooks(bookRepository.findById((long) bookId).get());
@@ -174,11 +174,11 @@ public class BookServices {
     }
 
     // PUT Update a genre's books (add bookIds to genre)
-    public Genres putBookGenres(int genreID, HashMap<String, ArrayList<Integer>> books) {
+    public Genres putBookGenres(Long genreID, HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("service calling updateBookGenre method ==>");
-        ArrayList<Integer> bookIds = books.get("books");
+        ArrayList<Long> bookIds = books.get("books");
         Genres currentGenre = genreRepository.findById((long) genreID).get();
-        for (int bookId : bookIds) {
+        for (Long bookId : bookIds) {
             if (!bookRepository.existsById((long) bookId))
                 throw new InfoNotFoundException("Book not found");
             currentGenre.setBooks(bookRepository.findById((long) bookId).get());
