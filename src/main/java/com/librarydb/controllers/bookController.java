@@ -24,6 +24,12 @@ public class bookController {
         this.bookServices = bookServices;
     }
 
+    @GetMapping("/")
+    public String isAlive(){
+        LOGGER.info("calling isAlive method from controller");
+        return "<h1>I'm Alive</h1>";
+    }
+
     // BOOKS
     // GET All Books
     @GetMapping("/books")
@@ -70,7 +76,7 @@ public class bookController {
     // PUT Update a Book
     @PutMapping(path = "/books/{book_ID}")
     public Books updateBook(
-            @PathVariable(value = "bookId") Long bookId,
+            @PathVariable(value = "book_ID") Long bookId,
             @RequestBody Books bookObject) {
         LOGGER.info("calling updateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
@@ -79,8 +85,8 @@ public class bookController {
     // PUT Update author's books (add bookIds to author)  "/authors/books/{authorID}"
     @PutMapping(path = "/authors/books/{authorID}")
     public Authors putBookAuthor(
-            @PathVariable(value = "authorID") int authorID,
-            @RequestBody HashMap<String, ArrayList<Integer>> books) {
+            @PathVariable(value = "authorID") Long authorID,
+            @RequestBody HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("calling updateBookAuthor method from controller");
         return bookServices.putBookAuthor(authorID, books);
     }
@@ -88,8 +94,8 @@ public class bookController {
     // PUT Update a genre's books (add bookIds to genre)
     @PutMapping(path = "/genres/books/{genreID}")
     public Genres putBookGenres(
-            @PathVariable(value = "genreID") int genreID,
-            @RequestBody HashMap<String, ArrayList<Integer>> books) {
+            @PathVariable(value = "genreID") Long genreID,
+            @RequestBody HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("calling updateBookGenre method from controller");
         return bookServices.putBookGenres(genreID, books);
     }
@@ -151,6 +157,15 @@ public class bookController {
                                 @RequestBody Authors authorObject) {
         LOGGER.info("controller calling updateAuthor ==>");
         return bookServices.updateAuthor(authorId, authorObject);
+    }
+
+    // PUT Update publisher's authors (add authorIds to publisher)
+    @PutMapping(path = "/publishers/authors/{publisherID}")
+    public Publishers putAuthorPublishers(
+            @PathVariable(value = "publisherID") Long publisherID,
+            @RequestBody ArrayList<Long> authors) {
+        LOGGER.info("calling updateAuthorPublishers method from controller");
+        return bookServices.putAuthorPublishers(publisherID, authors);
     }
 
     // DEL delete an Author
