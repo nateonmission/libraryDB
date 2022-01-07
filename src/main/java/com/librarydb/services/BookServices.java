@@ -125,7 +125,8 @@ public class BookServices {
         Books book = bookRepository.findByTitle(bookObject.getTitle());
         if (book != null ) {
             if(book.isRemovedFromLibrary()){
-                return bookRepository.save(bookObject);
+                book.setRemovedFromLibrary(false);
+                return bookRepository.save(book);
             } else {
                 throw new InfoExistsException("book with name "
                         + book.getTitle() + " already exists");
