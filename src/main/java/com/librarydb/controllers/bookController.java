@@ -160,13 +160,13 @@ public class bookController {
     }
 
     // PUT Update publisher's authors (add authorIds to publisher)
-    @PutMapping(path = "/publishers/authors/{publisherID}")
-    public Publishers putAuthorPublishers(
-            @PathVariable(value = "publisherID") Long publisherID,
-            @RequestBody ArrayList<Long> authors) {
-        LOGGER.info("calling updateAuthorPublishers method from controller");
-        return bookServices.putAuthorPublishers(publisherID, authors);
-    }
+//    @PutMapping(path = "/publishers/authors/{publisherID}")
+//    public Publishers putAuthorPublishers(
+//            @PathVariable(value = "publisherID") Long publisherID,
+//            @RequestBody ArrayList<Long> authors) {
+//        LOGGER.info("calling updateAuthorPublishers method from controller");
+//        return bookServices.putAuthorPublishers(publisherID, authors);
+//    }
 
     // DEL delete an Author
     @DeleteMapping(path = "/authors/{authorId}")
@@ -249,6 +249,13 @@ public class bookController {
     public String deletePublisher(@PathVariable(value = "pubID") Long pubID) {
         LOGGER.info("calling deletePublisher method from controller");
         return bookServices.deletePublisher(pubID);
+    }
+
+    // GET books by MediaType
+    @GetMapping("/books/media/{MediaType}")
+    public List<Books> getBooksByMediaType(@PathVariable(value = "MediaType") String MediaType) {
+        LOGGER.info("calling getBooks method from controller");
+        return bookServices.getBooksByMediaType(MediaType);
     }
 
 }
