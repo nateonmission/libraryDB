@@ -41,7 +41,7 @@ efficiently keep track of their books!
 | GET    | api/genres                           | returns a list of all genres   | None           |
 | POST   | api/genres                           | creates new genre              | Genre info     |
 | GET    | api/genres/{genreID}                 | returns a single genre         | None           |
-| PUT    | api/genres/{genreID}                 | updates a specfic genre        | Genre info     |
+| PUT    | api/genres/{genreID}                 | updates a specific genre       | Genre info     |
 | DELETE | api/genres/{genreID}                 | deletes a specific genre       | None           |
 
 
