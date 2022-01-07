@@ -251,4 +251,18 @@ public class bookController {
         return bookServices.deletePublisher(pubID);
     }
 
+    // GET books by MediaType
+    @GetMapping("/books/media/{MediaType}")
+    public List<Books> getBooksByMediaType(@PathVariable(value = "MediaType") String MediaType) {
+        LOGGER.info("calling getBooks method from controller");
+        return bookServices.getBooksByMediaType(MediaType);
+    }
+
+    // GET books by MediaType
+    @GetMapping("/books/available/{available}")
+    public List<Books> getBooksByAvailability(@PathVariable(value = "available") boolean available) {
+        LOGGER.info("calling getBooks method from controller");
+        return bookServices.getBooksByAvailability(available);
+    }
+
 }
