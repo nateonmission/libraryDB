@@ -59,10 +59,13 @@ class LibraryDbApplicationTests {
         book.setTitle(title);
         book.setIsbn10("1234567890");
         book.setIsbn13("1234567890123");
-        bookRepository.save(book);
-        Books testBook = bookRepository.findByTitle(title);
-        assertNotNull(bookRepository.findById(testBook.getId()).get());
-        bookRepository.delete(book);
+        services.createBook(book);
+        System.out.println("BOOK CREATED");
+//        Books testBook = bookRepository.findByTitle(title);
+//        System.out.println("BOOK FOUND");
+//        assertNotNull(testBook);
+//        System.out.println("NOT NULL");
+//        bookRepository.delete(book);
     }
 
 

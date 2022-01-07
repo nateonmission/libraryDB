@@ -9,8 +9,8 @@ efficiently keep track of their books!
 
 ## END POINTS
 
-| Method |Endpoints                           | Description                    | Done   |
-|--------|------------------------------------|--------------------------------|--------|
+| Method |Endpoints                           | Description                    | Built  | JUnit |
+|--------|------------------------------------|--------------------------------|--------|-------|
 | GET    |api/books                           | returns all books              | Tested |
 | POST   |api/books                           | creates new book               | Tested |
 | GET    |api/books/{bookID}                  | returns a book                 | Tested |
