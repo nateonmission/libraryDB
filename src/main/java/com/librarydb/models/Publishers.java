@@ -66,6 +66,11 @@ public class Publishers {
         return authors;
     }
 
+    public void setAuthors(Authors authors) {
+        this.getAuthors().add(authors);
+        authors.getPublishers().add(this);
+    }
+
     public void setAuthors(Set<Authors> authors) {
         this.authors = authors;
     }

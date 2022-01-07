@@ -160,13 +160,22 @@ public class bookController {
     }
 
     // PUT Update publisher's authors (add authorIds to publisher)
-//    @PutMapping(path = "/publishers/authors/{publisherID}")
-//    public Publishers putAuthorPublishers(
-//            @PathVariable(value = "publisherID") Long publisherID,
-//            @RequestBody ArrayList<Long> authors) {
-//        LOGGER.info("calling updateAuthorPublishers method from controller");
-//        return bookServices.putAuthorPublishers(publisherID, authors);
-//    }
+    @PutMapping(path = "/publishers/authors/{publishersID}")
+    public Publishers putAuthorPublishers(
+            @PathVariable(value = "publishersID") Long publishersID,
+            @RequestBody HashMap<String, ArrayList<Long>> authors) {
+        LOGGER.info("calling updateAuthorPublishers method from controller");
+        return bookServices.putAuthorPublishers(publishersID, authors);
+    }
+
+    // PUT Update author's publisher (add publisherIds to author)
+    @PutMapping(path = "/authors/publishers/{authorsID}")
+    public Authors putPublisherAuthor(
+            @PathVariable(value = "authorsID") Long authorsID,
+            @RequestBody HashMap<String, ArrayList<Long>> publishers) {
+        LOGGER.info("calling updatePublisherAuthor method from controller");
+        return bookServices.putPublisherAuthor(authorsID, publishers);
+    }
 
     // DEL delete an Author
     @DeleteMapping(path = "/authors/{authorId}")
