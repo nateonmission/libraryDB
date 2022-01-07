@@ -258,4 +258,11 @@ public class bookController {
         return bookServices.getBooksByMediaType(MediaType);
     }
 
+    // GET books by MediaType
+    @GetMapping("/books/available/{available}")
+    public List<Books> getBooksByAvailability(@PathVariable(value = "available") boolean available) {
+        LOGGER.info("calling getBooks method from controller");
+        return bookServices.getBooksByAvailability(available);
+    }
+
 }

@@ -469,4 +469,29 @@ public class BookServices {
         }
     }
 
+    // GET books by Availability api/books/availability
+    public List<Books> getBooksByAvailability(boolean available) {
+        LOGGER.info("service calling getBooksByAvailability ==>");
+        List<Books> books = bookRepository.findAll();
+        if (books.isEmpty()) {
+            throw new InfoNotFoundException("no books found");
+        } else {
+            LOGGER.info("Sorting book records");
+            List<Books> newBooks = new ArrayList<>();
+            for(Books book : books){
+                if (!book.isRemovedFromLibrary() && book.isAvailable() == available) {
+                    try {
+                        newBooks.add(book);
+                        LOGGER.info("book added");
+                    } catch (Exception e) {
+                        throw new InfoNotFoundException("Null!!!");
+                    }
+                }
+
+            }
+            LOGGER.info("returning...");
+            return newBooks;
+        }
+    }
+
 }
