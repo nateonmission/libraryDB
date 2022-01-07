@@ -50,7 +50,7 @@ efficiently keep track of their books!
 
 ### ERD Diagram
 Here is the diagram we built of our models.
-![ERD Diagram](https://user-images.githubusercontent.com/79819338/148406873-2b707cb8-9c64-4029-a1c6-ea8f6001adac.png)
+![ERD Diagram](https://user-images.githubusercontent.com/79819338/148582432-b8817f36-09f7-43e9-94b1-2656f7ddf334.png)
 
 ### User Stories
 
