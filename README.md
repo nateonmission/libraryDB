@@ -99,6 +99,6 @@ Our minimum viable product (MVP) will be a database that persists four models--b
 2. Using pgAdmin, create a database called ```librarydb```.
 3. Open the file ```libraryDB/src/main/resources/application-dev.properties``` and ensure line 1 states that port 9092 is going to be used. Change lines 6 and 7 to your PostgreSQL username and password. Go ahead and fire up your server!
 4. You can then use these endpoints in Postman to add a book to your library, and then add authors, genres, and publishers!
-    - [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/4946b25c3802e77d763d?action=collection%2Fimport)
+   - [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/4946b25c3802e77d763d?action=collection%2Fimport)
 
 
