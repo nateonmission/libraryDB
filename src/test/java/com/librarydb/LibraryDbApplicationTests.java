@@ -53,17 +53,14 @@ class LibraryDbApplicationTests {
     }
 
     @Test
-    public void testDBSave() {
+    public void testBookDBSave() {
         Books book = new Books();
         String title = "Testing the Test4";
         book.setTitle(title);
         book.setIsbn10("1234567890");
         book.setIsbn13("1234567890123");
-        services.createBook(book);
-        System.out.println("BOOK CREATED");
-//        Books testBook = bookRepository.findByTitle(title);
-//        System.out.println("BOOK FOUND");
-//        assertNotNull(testBook);
+        Books returnedBook = services.createBook(book);
+        assertNotNull(returnedBook);
 //        System.out.println("NOT NULL");
 //        bookRepository.delete(book);
     }

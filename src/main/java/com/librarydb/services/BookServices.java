@@ -144,6 +144,12 @@ public class BookServices {
             throw new InfoNotFoundException("book with id " + bookID + " not found");
         } else {
             book.get().setTitle(bookObject.getTitle());
+            book.get().setIsbn10(bookObject.getIsbn10());
+            book.get().setIsbn13(bookObject.getIsbn13());
+            book.get().setMediaType(bookObject.getMediaType());
+            book.get().setRead(bookObject.isRead());
+            book.get().setAvailable(bookObject.isAvailable());
+            book.get().setRemovedFromLibrary(bookObject.isRemovedFromLibrary());
             return bookRepository.save(book.get());
         }
     }

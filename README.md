@@ -9,37 +9,37 @@ efficiently keep track of their books!
 
 ## END POINTS
 
-| Method |Endpoints                           | Description                    | Built  | JUnit |
-|--------|------------------------------------|--------------------------------|--------|-------|
-| GET    |api/books                           | returns all books              | Tested |
-| POST   |api/books                           | creates new book               | Tested |
-| GET    |api/books/{bookID}                  | returns a book                 | Tested |
-| PUT    |api/books/{bookID}                  | updates specific book          | Tested |
-| DELETE |api/books/{bookID}                  | deletes specific book          | Tested |
-|        |                                    |                                |        |
-| GET    |api/authors                         | returns all authors            | Tested |
-| POST   |api/authors                         | creates new author             | Tested |
-| GET    |api/authors/{authorID}              | returns JSON for author        | Tested |
-| PUT    |api/authors/{authorID}              | updates specific author        | Tested |
-| DELETE |api/authors/{authorID}              | deletes specific author        | Tested |
-|        |                                    |                                |        |  
-| GET    |api/publishers                      | returns all publishers         | Tested |
-| POST   |api/publishers                      | creates new publisher          | Tested |
-| GET    |api/publishers/{publisherID}        | get single publisher           | Tested |
-| PUT    |api/publishers/{publisherID}        | updates specific publisher     | Tested |
-| DELETE |api/publishers/{publisherID}        | deletes specific publisher     | Tested |
-|        |                                    |                                |        |
-| GET    |api/genres                          | returns a list of genres       | Tested |
-| POST   |api/genres                          | creates new genre              | Tested |
-| GET    |api/genres/{genreID}                | get single genre               | Tested |
-| PUT    |api/genres/{genreID}                | updates                        | Tested |
-| DELETE |api/genres/{genreID}                | deletes                        | Tested |
-|        |                                    |                                |        |
-| GET    |api/genres/{genreID}/books          | returns JSON of books in genre |        |
-| GET    |api/authors/{authorID}/books        | returns JSON of author's books |        |
-| GET    |api/books/{bookID}/author           | returns JSON of book's authors | X      |
-| GET    |api/publishers/{publisherID}/books  | returns JSON of pub's books    |        |
-| GET    |api/publishers/{publisherID}/authors| returns JSON of pub's authors  | X      |
+| Method | Endpoints                            | Description                    | Built  | 
+|--------|--------------------------------------|--------------------------------|--------|
+| GET    | api/books                            | returns all books              | Passed |
+| POST   | api/books                            | creates new book               | Passed |
+| GET    | api/books/{bookID}                   | returns a book                 | Passed |
+| PUT    | api/books/{bookID}                   | updates specific book          | Passed |
+| DELETE | api/books/{bookID}                   | deletes specific book          | Passed |
+|        |                                      |                                |        |
+| GET    | api/authors                          | returns all authors            | Passed |
+| POST   | api/authors                          | creates new author             | Passed |
+| GET    | api/authors/{authorID}               | returns JSON for author        | Passed |
+| PUT    | api/authors/{authorID}               | updates specific author        | Passed |
+| DELETE | api/authors/{authorID}               | deletes specific author        | Passed |
+|        |                                      |                                |        |  
+| GET    | api/publishers                       | returns all publishers         | Passed |
+| POST   | api/publishers                       | creates new publisher          | Passed |
+| GET    | api/publishers/{publisherID}         | get single publisher           | Passed |
+| PUT    | api/publishers/{publisherID}         | updates specific publisher     | Passed |
+| DELETE | api/publishers/{publisherID}         | deletes specific publisher     | Passed |
+|        |                                      |                                |        |
+| GET    | api/genres                           | returns a list of genres       | Passed |
+| POST   | api/genres                           | creates new genre              | Passed |
+| GET    | api/genres/{genreID}                 | get single genre               | Passed |
+| PUT    | api/genres/{genreID}                 | updates                        | Passed |
+| DELETE | api/genres/{genreID}                 | deletes                        | Passed |
+|        |                                      |                                |        |
+| GET    | api/genres/{genreID}/books           | returns JSON of books in genre |        |
+| GET    | api/authors/{authorID}/books         | returns JSON of author's books |        |
+| GET    | api/books/{bookID}/author            | returns JSON of book's authors |        |
+| GET    | api/publishers/{publisherID}/books   | returns JSON of pub's books    |        |
+| GET    | api/publishers/{publisherID}/authors | returns JSON of pub's authors  |        |
 
 ## PLANNING
 

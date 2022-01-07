@@ -70,7 +70,7 @@ public class bookController {
     // PUT Update a Book
     @PutMapping(path = "/books/{book_ID}")
     public Books updateBook(
-            @PathVariable(value = "bookId") Long bookId,
+            @PathVariable(value = "book_ID") Long bookId,
             @RequestBody Books bookObject) {
         LOGGER.info("calling updateBook method from controller");
         return bookServices.updateBook(bookId, bookObject);
