@@ -27,7 +27,10 @@ efficiently keep track of their books!
 | POST   | api/authors                          | creates new author             | Author info    |
 | GET    | api/authors/{authorID}               | returns a single author        | None           |
 | GET    | api/books/{bookID}/authors           | returns a book's authors       | None           |
+| GET    | api/publishers/{publisherID}/authors | returns a publisher's authors  | None           |
 | PUT    | api/authors/{authorID}               | updates specific author        | Author info    |
+| PUT    | api/publishers/authors/{publisherID} | updates an publisher's authors | Author ids     |
+| PUT    | api/authors/publishers/{authorID}    | updates an author's publishers | Publisher ids  |
 | DELETE | api/authors/{authorID}               | deletes specific author        | None           |
 |        |                                      |                                |                |  
 | GET    | api/publishers                       | returns list of all publishers | None           |
@@ -42,8 +45,10 @@ efficiently keep track of their books!
 | PUT    | api/genres/{genreID}                 | updates a specific genre       | Genre info     |
 | DELETE | api/genres/{genreID}                 | deletes a specific genre       | None           |
 |        |                                      |                                |                |
-<!--| GET    | api/publishers/{publisherID}/authors | returns a publisher's authors  | None           |-->
-<!--| PUT    | api/publishers/authors/{publisherID} | updates an publisher's authors | Author ids     |-->
+| GET    | api/books/media/{mediaType}          | returns books by media type    | None           |
+| GET    | api/books/available/{available}      | returns books by availability  | None           |
+| GET    | api/books/read/{read}                | returns books by isRead        | None           |
+
 
 
 ## PLANNING
@@ -85,6 +90,7 @@ Our minimum viable product (MVP) will be a database that persists four models--b
 ### Challenges/Hurdles
 - Our biggest challenge was utilizing Many To Many mapping for the relationships between our models. Since we had not encountered during classtime an example of how this would be implemented, it required us to do quite a bit of research, trial/error, more research, then assistance from more experienced brains! But in the end, it was a good learning experience that will likely be useful in future applications. 
 - Relatedly, we needed to utilize a "soft" delete of books. When we update a book's author, genre, and publisher, it is added to those join tables. Thus, deletion from the book table was not possible without major refactoring. So we added a removedFromLibrary variable so that our GET methods only return books that are set to false (meaning the books are still in our possession). 
+- We have worked on getting our Many To Many relationship between authors and publishers to work as well. But at present, errors regarding constraint violations are occuring. 
 
 ## TECHNOLOGY USED
 1. Lucid Charts to create the ERD.
