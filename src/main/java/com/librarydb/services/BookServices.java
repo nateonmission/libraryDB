@@ -154,7 +154,7 @@ public class BookServices {
         }
     }
 
-
+    // PUT Update author's books (add bookIds to author)
     public Authors putBookAuthor(int authorID, HashMap<String, ArrayList<Integer>> books) {
         LOGGER.info("service calling updateBookAuthor method ==>");
         ArrayList<Integer> bookIds = books.get("books");
@@ -167,6 +167,7 @@ public class BookServices {
         return authorRepository.save(currentAuthor);
     }
 
+    // PUT Update a genre's books (add bookIds to genre)
     public Genres putBookGenres(int genreID, HashMap<String, ArrayList<Integer>> books) {
         LOGGER.info("service calling updateBookGenre method ==>");
         ArrayList<Integer> bookIds = books.get("books");
@@ -179,6 +180,7 @@ public class BookServices {
         return genreRepository.save(currentGenre);
     }
 
+    // PUT Update publisher's books (add bookIds to publisher)
     public Publishers putBookPublishers(
             Long publisherID, HashMap<String, ArrayList<Long>> books) {
         LOGGER.info("service calling updateBookPublisher method ==>");
@@ -279,6 +281,20 @@ public class BookServices {
             throw new InfoNotFoundException("author with id "
                     + authorId + " not found");
         }
+    }
+
+    // PUT Update publisher's authors (add authorIds to publisher)
+    public Publishers putAuthorPublishers(
+            Long publisherID, HashMap<String, ArrayList<Long>> authors) {
+        LOGGER.info("service calling updateAuthorPublisher method ==>");
+        ArrayList<Long> authorIds = authors.get("authors");
+        Publishers currentPublisher = publisherRepository.findById( publisherID).get();
+        for (long authorId : authorIds) {
+            if (!authorRepository.existsById((long) authorId))
+                throw new InfoNotFoundException("Author not found");
+            currentPublisher.setAuthors((Set<Authors>) authorRepository.findById(authorId).get());
+        }
+        return publisherRepository.save(currentPublisher);
     }
 
     // DEL delete an author api/authors/{author_ID}

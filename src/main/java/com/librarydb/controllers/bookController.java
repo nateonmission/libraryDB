@@ -159,6 +159,15 @@ public class bookController {
         return bookServices.updateAuthor(authorId, authorObject);
     }
 
+    // PUT Update publisher's authors (add authorIds to publisher)
+    @PutMapping(path = "/publishers/authors/{publisherID}")
+    public Publishers putAuthorPublishers(
+            @PathVariable(value = "publisherID") Long publisherID,
+            @RequestBody HashMap<String, ArrayList<Long>> authors) {
+        LOGGER.info("calling updateAuthorPublishers method from controller");
+        return bookServices.putAuthorPublishers(publisherID, authors);
+    }
+
     // DEL delete an Author
     @DeleteMapping(path = "/authors/{authorId}")
     public String deleteAuthor(@PathVariable(value = "authorId") Long authorId) {
