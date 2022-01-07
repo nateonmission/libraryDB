@@ -129,9 +129,14 @@ public class BookServices {
     public Books createBook(Books bookObject) {
         LOGGER.info("service calling createBook ==>");
         Books book = bookRepository.findByTitle(bookObject.getTitle());
-        if (book != null) {
-            throw new InfoExistsException("book with name "
-                    + book.getTitle() + " already exists");
+        if (book != null ) {
+            if(book.isRemovedFromLibrary()){
+                book.setRemovedFromLibrary(false);
+                return bookRepository.save(book);
+            } else {
+                throw new InfoExistsException("book with name "
+                        + book.getTitle() + " already exists");
+            }
         } else {
             return bookRepository.save(bookObject);
         }
