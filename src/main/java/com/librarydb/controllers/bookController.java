@@ -24,6 +24,12 @@ public class bookController {
         this.bookServices = bookServices;
     }
 
+    @GetMapping("/")
+    public String isAlive(){
+        LOGGER.info("calling isAlive method from controller");
+        return "<h1>I'm Alive</h1>";
+    }
+
     // BOOKS
     // GET All Books
     @GetMapping("/books")
@@ -151,6 +157,15 @@ public class bookController {
                                 @RequestBody Authors authorObject) {
         LOGGER.info("controller calling updateAuthor ==>");
         return bookServices.updateAuthor(authorId, authorObject);
+    }
+
+    // PUT Update publisher's authors (add authorIds to publisher)
+    @PutMapping(path = "/publishers/authors/{publisherID}")
+    public Publishers putAuthorPublishers(
+            @PathVariable(value = "publisherID") Long publisherID,
+            @RequestBody HashMap<String, ArrayList<Long>> authors) {
+        LOGGER.info("calling updateAuthorPublishers method from controller");
+        return bookServices.putAuthorPublishers(publisherID, authors);
     }
 
     // DEL delete an Author
