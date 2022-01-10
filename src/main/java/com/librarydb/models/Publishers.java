@@ -71,8 +71,8 @@ public class Publishers {
         authors.getPublishers().add(this);
     }
 
-    public void setAuthors(Set<Authors> authors) {
-        this.authors = authors;
-    }
+//    public void setAuthors(Set<Authors> authors) {
+//        this.authors = authors;
+//    }
 }
 
